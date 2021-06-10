@@ -92,7 +92,7 @@ struct MonthView<DateView>: View where DateView: View {
 
     let month: Date
     let showHeader: Bool
-    let headFont: Font
+    let headFont: Font?
     let headPadding: CGFloat?
     let hSpacing: CGFloat?
     let vSpacing: CGFloat?
@@ -101,7 +101,7 @@ struct MonthView<DateView>: View where DateView: View {
     init(
         month: Date,
         showHeader: Bool = true,
-        headFont: Font = .title,
+        headFont: Font? = nil,
         headPadding: CGFloat? = nil,
         hSpacing: CGFloat? = nil,
         vSpacing: CGFloat? = nil,
