@@ -10,7 +10,7 @@ import SwiftUI
 struct BaterryView: View {
     let baterryLevel: Float
     let baterryStatus: UIDevice.BatteryState
-    let showPercent: Bool = false
+    let showPercent: Bool = true
     
     var body: some View {
         HStack {
@@ -21,13 +21,15 @@ struct BaterryView: View {
                     .background(
                         GeometryReader { geometry in
                             if baterryLevel >= 0 {
-                                let width: CGFloat = geometry.size.width
-                                let tPadding = 7 + (1.0 - CGFloat(baterryLevel)) * width
+                                let width: CGFloat = geometry.size.width - 11
+//                                let tPaddingOffset = (width - 11) * baterryLevel
                                 RoundedRectangle(cornerRadius: 2)
-                                    .fill(baterryLevel > 0.5 ? Color.green : Color.yellow)
-                                    .padding([.top,.bottom], 3)
+                                    .fill(baterryLevel > 0.25 ? Color.green : Color.yellow)
+                                    .frame(width: width * CGFloat(baterryLevel))
+                                    .padding(.vertical, 3)
                                     .padding([.leading], 4)
-                                    .padding([.trailing], tPadding)
+                                    .padding([.trailing], 7)
+                                
                             }
                         }
                     )
@@ -50,7 +52,7 @@ struct BaterryView: View {
 #if DEBUG
 struct BaterryView_Previews: PreviewProvider {
     static var previews: some View {
-        BaterryView(baterryLevel: 1.0, baterryStatus: .unplugged)
+        BaterryView(baterryLevel: 0.2, baterryStatus: .unplugged)
     }
 }
 #endif

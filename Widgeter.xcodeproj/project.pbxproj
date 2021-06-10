@@ -23,6 +23,18 @@
 		EFF08E0C2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
 		EFF08E0D2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
 		EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
+		EFF08E102670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
+		EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
+		EFF08E122670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
+		EFF08E142671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
+		EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
+		EFF08E162671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
+		EFF08E192671A7C300770F3C /* LESLIE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFF08E182671A7C300770F3C /* LESLIE.ttf */; };
+		EFF08E1A2671A7C300770F3C /* LESLIE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFF08E182671A7C300770F3C /* LESLIE.ttf */; };
+		EFF08E1B2671A7C300770F3C /* LESLIE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFF08E182671A7C300770F3C /* LESLIE.ttf */; };
+		EFF08E1D2671A91700770F3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E1C2671A91700770F3C /* Date+Extension.swift */; };
+		EFF08E1E2671A91700770F3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E1C2671A91700770F3C /* Date+Extension.swift */; };
+		EFF08E1F2671A91700770F3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E1C2671A91700770F3C /* Date+Extension.swift */; };
 		EFF307632670987F00D5E1F4 /* WidgeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307502670987D00D5E1F4 /* WidgeterApp.swift */; };
 		EFF307642670987F00D5E1F4 /* WidgeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307502670987D00D5E1F4 /* WidgeterApp.swift */; };
 		EFF307652670987F00D5E1F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307512670987D00D5E1F4 /* ContentView.swift */; };
@@ -80,6 +92,10 @@
 		EFF08E022670D0D400770F3C /* BaterryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaterryView.swift; sourceTree = "<group>"; };
 		EFF08E062670D64900770F3C /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUsageView.swift; sourceTree = "<group>"; };
+		EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockMarkView.swift; sourceTree = "<group>"; };
+		EFF08E132671A76000770F3C /* DititalClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DititalClockView.swift; sourceTree = "<group>"; };
+		EFF08E182671A7C300770F3C /* LESLIE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LESLIE.ttf; sourceTree = "<group>"; };
+		EFF08E1C2671A91700770F3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		EFF307502670987D00D5E1F4 /* WidgeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeterApp.swift; sourceTree = "<group>"; };
 		EFF307512670987D00D5E1F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EFF307522670987F00D5E1F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,9 +157,19 @@
 			isa = PBXGroup;
 			children = (
 				EFF08E022670D0D400770F3C /* BaterryView.swift */,
+				EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */,
+				EFF08E132671A76000770F3C /* DititalClockView.swift */,
 				EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EFF08E172671A77500770F3C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EFF08E182671A7C300770F3C /* LESLIE.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		EFF3074A2670987D00D5E1F4 = {
@@ -164,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF307882670AD6300D5E1F4 /* Extension */,
+				EFF08E172671A77500770F3C /* Font */,
 				EFF3078526709B6600D5E1F4 /* AppConfiguration.swift */,
 				EFF3078126709A3A00D5E1F4 /* Model */,
 				EFF307712670998D00D5E1F4 /* State */,
@@ -225,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF08E062670D64900770F3C /* UIDevice+Extension.swift */,
+				EFF08E1C2671A91700770F3C /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF08E1B2671A7C300770F3C /* LESLIE.ttf in Resources */,
 				EFF08DF62670C81D00770F3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF08E192671A7C300770F3C /* LESLIE.ttf in Resources */,
 				EFF307672670987F00D5E1F4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF08E1A2671A7C300770F3C /* LESLIE.ttf in Resources */,
 				EFF307682670987F00D5E1F4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +402,9 @@
 				EFF08E092670D64900770F3C /* UIDevice+Extension.swift in Sources */,
 				EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */,
 				EFF08DF82670C81D00770F3C /* widget.intentdefinition in Sources */,
+				EFF08E162671A76000770F3C /* DititalClockView.swift in Sources */,
+				EFF08E1F2671A91700770F3C /* Date+Extension.swift in Sources */,
+				EFF08E122670DA7700770F3C /* ClockMarkView.swift in Sources */,
 				EFF08DF32670C81C00770F3C /* widget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,11 +418,14 @@
 				EFF08E0C2670D6E700770F3C /* StorageUsageView.swift in Sources */,
 				EFF08E032670D0D400770F3C /* BaterryView.swift in Sources */,
 				EFF08E072670D64900770F3C /* UIDevice+Extension.swift in Sources */,
+				EFF08E1D2671A91700770F3C /* Date+Extension.swift in Sources */,
 				EFF3078626709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
 				EFF08DF92670C81D00770F3C /* widget.intentdefinition in Sources */,
 				EFF3077F267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077B267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30777267099AE00D5E1F4 /* Store.swift in Sources */,
+				EFF08E102670DA7700770F3C /* ClockMarkView.swift in Sources */,
+				EFF08E142671A76000770F3C /* DititalClockView.swift in Sources */,
 				EFF307652670987F00D5E1F4 /* ContentView.swift in Sources */,
 				EFF307632670987F00D5E1F4 /* WidgeterApp.swift in Sources */,
 			);
@@ -401,12 +438,15 @@
 				EFF3077A267099AE00D5E1F4 /* AppError.swift in Sources */,
 				EFF3077E267099AE00D5E1F4 /* AppAction.swift in Sources */,
 				EFF3078726709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
+				EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */,
 				EFF08E082670D64900770F3C /* UIDevice+Extension.swift in Sources */,
+				EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */,
 				EFF08E042670D0D400770F3C /* BaterryView.swift in Sources */,
 				EFF30780267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077C267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30778267099AE00D5E1F4 /* Store.swift in Sources */,
 				EFF307662670987F00D5E1F4 /* ContentView.swift in Sources */,
+				EFF08E1E2671A91700770F3C /* Date+Extension.swift in Sources */,
 				EFF307642670987F00D5E1F4 /* WidgeterApp.swift in Sources */,
 				EFF08E0D2670D6E700770F3C /* StorageUsageView.swift in Sources */,
 			);
@@ -430,7 +470,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6NGHAR2FG;
 				INFOPLIST_FILE = widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -595,8 +635,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Widgeter.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D6NGHAR2FG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -621,8 +661,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Widgeter.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D6NGHAR2FG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

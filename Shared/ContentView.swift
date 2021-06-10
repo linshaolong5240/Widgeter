@@ -18,6 +18,7 @@ struct ContentView: View {
             Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")
             BaterryView(baterryLevel: baterry.baterryLevel, baterryStatus: baterry.baterryStatus)
             StorageUsageView()
+            DititalClockView(Date())
         }.padding(.horizontal)
     }
 }
