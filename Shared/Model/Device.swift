@@ -1,15 +1,17 @@
 //
-//  UIDevice+Extension.swift
+//  Device.swift
 //  Widgeter
 //
-//  Created by 林少龙 on 2021/6/9.
+//  Created by qfdev on 2021/6/10.
 //
 
 import Foundation
-import UIKit.UIDevice
 
+class Device {
+    public static let current = Device()
+}
 //https://stackoverflow.com/questions/26198073/query-available-ios-disk-space-with-swift
-extension UIDevice {
+extension Device {
     public static var systemSize: Int? {
         guard let systemAttributes = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory() as String),
             let totalSize = (systemAttributes[.systemSize] as? NSNumber)?.intValue else {
@@ -29,7 +31,7 @@ extension UIDevice {
     }
 }
 
-extension UIDevice {
+extension Device {
     func MBFormatter(_ bytes: Int64) -> String {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = ByteCountFormatter.Units.useMB

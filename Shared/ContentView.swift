@@ -29,8 +29,8 @@ struct ContentView: View {
                 Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")
                 #if canImport(UIKit)
                 BaterryView(baterryLevel: baterry.baterryLevel, baterryStatus: baterry.baterryStatus)
-                StorageUsageView()
                 #endif
+                StorageUsageView()
                 DititalClockView(Date())
             }
         }.padding(.horizontal)

@@ -16,8 +16,8 @@ struct StorageUsageView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(UIDevice.current.usedDiskSpaceInGB) \((UIDevice.current.totalDiskSpaceInGB))")
-            ProgressView(value: CGFloat(Double(UIDevice.current.freeDiskSpaceInBytes) / Double(UIDevice.current.totalDiskSpaceInBytes)))
+            Text("\(Device.current.usedDiskSpaceInGB) \((Device.current.totalDiskSpaceInGB))")
+            ProgressView(value: CGFloat(Double(Device.current.freeDiskSpaceInBytes) / Double(Device.current.totalDiskSpaceInBytes)))
         }
     }
 }
