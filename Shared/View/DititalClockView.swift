@@ -35,7 +35,7 @@ public struct  DefaultDigitalColckStyle: DigitalColckStyle {
             }
             Text(timerDate, style: .timer)
         }
-        .font(Font.custom("LESLIE", size: 38))
+        .font(Font.custom("LESLIE", size: 36))
     }
 }
 

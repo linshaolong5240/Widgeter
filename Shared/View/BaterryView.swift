@@ -29,7 +29,6 @@ struct BaterryView: View {
                                     .padding(.vertical, 3)
                                     .padding([.leading], 4)
                                     .padding([.trailing], 7)
-                                
                             }
                         }
                     )

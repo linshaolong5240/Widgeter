@@ -44,6 +44,9 @@ struct widgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
+        #if DEBUG
+        DititalClockView(entry.date)
+        #else
         switch entry.configuration.timeType {
         case .time:
             Text(entry.date, style: .time)
@@ -51,9 +54,12 @@ struct widgetEntryView : View {
             Text(entry.date, style: .timer)
         case .date:
             Text(entry.date, style: .date)
+        case .digital:
+            DititalClockView(entry.date)
         case .unknown:
             Text(entry.date, style: .time)
         }
+        #endif
     }
 }
 

@@ -55,6 +55,16 @@
 					<key>INEnumValueName</key>
 					<string>timer</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>digital</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>5n8xCN</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>digital</string>
+				</dict>
 			</array>
 		</dict>
 	</array>
