@@ -27,8 +27,10 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text("\(Image(systemName: "figure.walk")) \(health.stepCount) step")
                 Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")
+                #if canImport(UIKit)
                 BaterryView(baterryLevel: baterry.baterryLevel, baterryStatus: baterry.baterryStatus)
                 StorageUsageView()
+                #endif
                 DititalClockView(Date())
             }
         }.padding(.horizontal)

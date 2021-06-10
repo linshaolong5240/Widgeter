@@ -6,16 +6,21 @@
 //
 
 import Foundation
+#if canImport(HealthKit)
 import HealthKit
+#endif
 
 enum AppAction {
     case initAction
-    case initBaterry
     case error(AppError)
-    
+    #if canImport(UIKit)
+    case baterryInit
     case baterryUpdate
+    #endif
+    #if canImport(HealthKit)
     case healthQuery(type: AppState.Health.HealthType)
     case healthQueryDone(type: AppState.Health.HealthType, samples: [HKQuantitySample]?)
     case healthRequestAuthorization
     case healthRequestAuthorizationDone(success: Bool)
+    #endif
 }

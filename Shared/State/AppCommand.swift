@@ -7,8 +7,12 @@
 
 import Foundation
 import Combine
+#if canImport(UIKit)
 import UIKit.UIDevice
+#endif
+#if canImport(HealthKit)
 import HealthKit
+#endif
 
 protocol AppCommand {
     func execute(in store: Store)
@@ -16,11 +20,16 @@ protocol AppCommand {
 
 struct InitActionCommand: AppCommand {
     func execute(in store: Store) {
-        store.dispatch(.initBaterry)
+        #if canImport(UIKit)
+        store.dispatch(.baterryInit)
+        #endif
+        #if canImport(HealthKit)
         store.dispatch(.healthRequestAuthorization)
+        #endif
     }
 }
 
+#if canImport(UIKit)
 struct InitBaterryCommand: AppCommand {
     func execute(in store: Store) {
         UIDevice.current.isBatteryMonitoringEnabled = true
@@ -38,7 +47,17 @@ struct InitBaterryCommand: AppCommand {
         }.store(in: &store.cancellableSet)
     }
 }
+#endif
 
+#if canImport(HealthKit)
+extension AppState.Health.HealthType {
+    var sampleType: HKSampleType {
+        switch self {
+        case .distanceWalkingRunning: return .quantityType(forIdentifier: .distanceWalkingRunning)!
+        case .stepCount: return .quantityType(forIdentifier: .stepCount)!
+        }
+    }
+}
 struct HealthQueryCommand: AppCommand {
     enum HKDeviceModel: String {
         case iPhone
@@ -93,3 +112,4 @@ struct HealthRequestAuthorizationCommand: AppCommand {
         }
     }
 }
+#endif

@@ -7,8 +7,12 @@
 
 import Foundation
 import Combine
+#if canImport(UIKit)
 import UIKit.UIDevice
+#endif
+#if canImport(HealthKit)
 import HealthKit.HKSample
+#endif
 
 @propertyWrapper
 struct UserDefault<T: Codable> {
@@ -40,14 +44,13 @@ struct AppState {
 
 extension AppState {
     struct Baterry {
-        init() {
-            UIDevice.current.isBatteryMonitoringEnabled = true
-        }
         var baterryLevel: Float = -1.0
         #if false//DEBUG
         var baterryStatus: UIDevice.BatteryState { get { UIDevice.BatteryState.unplugged } set { } }
         #else
+        #if canImport(UIKit)
         var baterryStatus: UIDevice.BatteryState = .unknown
+        #endif
         #endif
     }
     struct Health {
@@ -64,14 +67,5 @@ extension AppState {
         
     }
     struct Settings {
-    }
-}
-
-extension AppState.Health.HealthType {
-    var sampleType: HKSampleType {
-        switch self {
-        case .distanceWalkingRunning: return .quantityType(forIdentifier: .distanceWalkingRunning)!
-        case .stepCount: return .quantityType(forIdentifier: .stepCount)!
-        }
     }
 }

@@ -6,14 +6,18 @@
 //
 
 import Foundation
+#if canImport(HealthKit)
 import HealthKit
+#endif
 
 struct AppConfiguration {
     
 }
 
+#if canImport(HealthKit)
 struct HealthConfigration {
     public static let allTypes = Set([HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                                       HKObjectType.quantityType(forIdentifier: .stepCount)!])
     public static let toRead = Self.allTypes
 }
+#endif

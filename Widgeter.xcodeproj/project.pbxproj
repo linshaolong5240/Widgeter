@@ -10,6 +10,8 @@
 		EF010A1B2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
 		EF010A1C2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
 		EF010A1D2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
+		EF010A282672221D00DB2AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF08DF52670C81D00770F3C /* Assets.xcassets */; };
+		EF010A292672221D00DB2AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF08DF52670C81D00770F3C /* Assets.xcassets */; };
 		EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
@@ -22,15 +24,12 @@
 		EFF08DF62670C81D00770F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF08DF52670C81D00770F3C /* Assets.xcassets */; };
 		EFF08DF82670C81D00770F3C /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFF08DF42670C81C00770F3C /* widget.intentdefinition */; };
 		EFF08DF92670C81D00770F3C /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFF08DF42670C81C00770F3C /* widget.intentdefinition */; };
-		EFF08DFC2670C81D00770F3C /* widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFF08DEC2670C81C00770F3C /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EFF08DFC2670C81D00770F3C /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFF08DEC2670C81C00770F3C /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFF08E032670D0D400770F3C /* BaterryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E022670D0D400770F3C /* BaterryView.swift */; };
-		EFF08E042670D0D400770F3C /* BaterryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E022670D0D400770F3C /* BaterryView.swift */; };
 		EFF08E052670D0D400770F3C /* BaterryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E022670D0D400770F3C /* BaterryView.swift */; };
 		EFF08E072670D64900770F3C /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E062670D64900770F3C /* UIDevice+Extension.swift */; };
-		EFF08E082670D64900770F3C /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E062670D64900770F3C /* UIDevice+Extension.swift */; };
 		EFF08E092670D64900770F3C /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E062670D64900770F3C /* UIDevice+Extension.swift */; };
 		EFF08E0C2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
-		EFF08E0D2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
 		EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
 		EFF08E102670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
 		EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
@@ -48,8 +47,6 @@
 		EFF307642670987F00D5E1F4 /* WidgeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307502670987D00D5E1F4 /* WidgeterApp.swift */; };
 		EFF307652670987F00D5E1F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307512670987D00D5E1F4 /* ContentView.swift */; };
 		EFF307662670987F00D5E1F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF307512670987D00D5E1F4 /* ContentView.swift */; };
-		EFF307672670987F00D5E1F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF307522670987F00D5E1F4 /* Assets.xcassets */; };
-		EFF307682670987F00D5E1F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF307522670987F00D5E1F4 /* Assets.xcassets */; };
 		EFF30777267099AE00D5E1F4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF30772267099AE00D5E1F4 /* Store.swift */; };
 		EFF30778267099AE00D5E1F4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF30772267099AE00D5E1F4 /* Store.swift */; };
 		EFF30779267099AE00D5E1F4 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF30773267099AE00D5E1F4 /* AppError.swift */; };
@@ -82,7 +79,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EFF08DFC2670C81D00770F3C /* widgetExtension.appex in Embed App Extensions */,
+				EFF08DFC2670C81D00770F3C /* WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,14 +90,14 @@
 		EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetView.swift; sourceTree = "<group>"; };
 		EF7C074D2671F07A00AA2A69 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EF7C07582671F6BC00AA2A69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		EFF08DEC2670C81C00770F3C /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF08DEC2670C81C00770F3C /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF08DED2670C81C00770F3C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EFF08DEF2670C81C00770F3C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		EFF08DF22670C81C00770F3C /* widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widget.swift; sourceTree = "<group>"; };
 		EFF08DF42670C81C00770F3C /* widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = widget.intentdefinition; sourceTree = "<group>"; };
 		EFF08DF52670C81D00770F3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFF08DF72670C81D00770F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFF08E012670C91700770F3C /* widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetExtension.entitlements; sourceTree = "<group>"; };
+		EFF08E012670C91700770F3C /* widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		EFF08E022670D0D400770F3C /* BaterryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaterryView.swift; sourceTree = "<group>"; };
 		EFF08E062670D64900770F3C /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUsageView.swift; sourceTree = "<group>"; };
@@ -110,7 +107,6 @@
 		EFF08E1C2671A91700770F3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		EFF307502670987D00D5E1F4 /* WidgeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeterApp.swift; sourceTree = "<group>"; };
 		EFF307512670987D00D5E1F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		EFF307522670987F00D5E1F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFF307572670987F00D5E1F4 /* Widgeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Widgeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF3075A2670987F00D5E1F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFF3075F2670987F00D5E1F4 /* Widgeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Widgeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +118,7 @@
 		EFF30775267099AE00D5E1F4 /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		EFF30776267099AE00D5E1F4 /* AppCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCommand.swift; sourceTree = "<group>"; };
 		EFF3078526709B6600D5E1F4 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		EFF3078C2670B61700D5E1F4 /* Widgeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgeter.entitlements; sourceTree = "<group>"; };
+		EFF3078C2670B61700D5E1F4 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		EFF3078E2670B61700D5E1F4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -162,13 +158,20 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
+		EF010A2A2672224600DB2AF9 /* iOS Widget */ = {
+			isa = PBXGroup;
+			children = (
+				EFF08DF72670C81D00770F3C /* Info.plist */,
+				EFF08E012670C91700770F3C /* widget.entitlements */,
+			);
+			path = "iOS Widget";
+			sourceTree = "<group>";
+		};
 		EFF08DF12670C81C00770F3C /* widget */ = {
 			isa = PBXGroup;
 			children = (
 				EFF08DF22670C81C00770F3C /* widget.swift */,
 				EFF08DF42670C81C00770F3C /* widget.intentdefinition */,
-				EFF08DF52670C81D00770F3C /* Assets.xcassets */,
-				EFF08DF72670C81D00770F3C /* Info.plist */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -197,12 +200,10 @@
 		EFF3074A2670987D00D5E1F4 = {
 			isa = PBXGroup;
 			children = (
-				EFF08E012670C91700770F3C /* widgetExtension.entitlements */,
-				EFF3078C2670B61700D5E1F4 /* Widgeter.entitlements */,
 				EFF3074F2670987D00D5E1F4 /* Shared */,
 				EFF307592670987F00D5E1F4 /* iOS */,
+				EF010A2A2672224600DB2AF9 /* iOS Widget */,
 				EFF307602670987F00D5E1F4 /* macOS */,
-				EFF08DF12670C81C00770F3C /* widget */,
 				EFF307582670987F00D5E1F4 /* Products */,
 				EFF3078D2670B61700D5E1F4 /* Frameworks */,
 			);
@@ -214,13 +215,14 @@
 				EF7C07592671F6BC00AA2A69 /* Localizable.strings */,
 				EFF307882670AD6300D5E1F4 /* Extension */,
 				EFF08E172671A77500770F3C /* Font */,
-				EFF3078526709B6600D5E1F4 /* AppConfiguration.swift */,
 				EFF3078126709A3A00D5E1F4 /* Model */,
 				EFF307712670998D00D5E1F4 /* State */,
 				EFF08E0A2670D6B600770F3C /* View */,
-				EFF307502670987D00D5E1F4 /* WidgeterApp.swift */,
+				EFF08DF12670C81C00770F3C /* widget */,
+				EFF3078526709B6600D5E1F4 /* AppConfiguration.swift */,
 				EFF307512670987D00D5E1F4 /* ContentView.swift */,
-				EFF307522670987F00D5E1F4 /* Assets.xcassets */,
+				EFF307502670987D00D5E1F4 /* WidgeterApp.swift */,
+				EFF08DF52670C81D00770F3C /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -230,7 +232,7 @@
 			children = (
 				EFF307572670987F00D5E1F4 /* Widgeter.app */,
 				EFF3075F2670987F00D5E1F4 /* Widgeter.app */,
-				EFF08DEC2670C81C00770F3C /* widgetExtension.appex */,
+				EFF08DEC2670C81C00770F3C /* WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF3075A2670987F00D5E1F4 /* Info.plist */,
+				EFF3078C2670B61700D5E1F4 /* iOS.entitlements */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -293,9 +296,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EFF08DEB2670C81C00770F3C /* widgetExtension */ = {
+		EFF08DEB2670C81C00770F3C /* WidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFF08E002670C81D00770F3C /* Build configuration list for PBXNativeTarget "widgetExtension" */;
+			buildConfigurationList = EFF08E002670C81D00770F3C /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
 			buildPhases = (
 				EFF08DE82670C81C00770F3C /* Sources */,
 				EFF08DE92670C81C00770F3C /* Frameworks */,
@@ -305,9 +308,9 @@
 			);
 			dependencies = (
 			);
-			name = widgetExtension;
+			name = WidgetExtension;
 			productName = widgetExtension;
-			productReference = EFF08DEC2670C81C00770F3C /* widgetExtension.appex */;
+			productReference = EFF08DEC2670C81C00770F3C /* WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		EFF307562670987F00D5E1F4 /* Widgeter (iOS) */ = {
@@ -382,7 +385,7 @@
 			targets = (
 				EFF307562670987F00D5E1F4 /* Widgeter (iOS) */,
 				EFF3075E2670987F00D5E1F4 /* Widgeter (macOS) */,
-				EFF08DEB2670C81C00770F3C /* widgetExtension */,
+				EFF08DEB2670C81C00770F3C /* WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -404,7 +407,7 @@
 			files = (
 				EFF08E192671A7C300770F3C /* LESLIE.ttf in Resources */,
 				EF7C07552671F6BC00AA2A69 /* Localizable.strings in Resources */,
-				EFF307672670987F00D5E1F4 /* Assets.xcassets in Resources */,
+				EF010A282672221D00DB2AF9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +417,7 @@
 			files = (
 				EFF08E1A2671A7C300770F3C /* LESLIE.ttf in Resources */,
 				EF7C07562671F6BC00AA2A69 /* Localizable.strings in Resources */,
-				EFF307682670987F00D5E1F4 /* Assets.xcassets in Resources */,
+				EF010A292672221D00DB2AF9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,16 +475,13 @@
 				EFF3078726709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
 				EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */,
 				EF010A1C2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
-				EFF08E082670D64900770F3C /* UIDevice+Extension.swift in Sources */,
 				EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */,
-				EFF08E042670D0D400770F3C /* BaterryView.swift in Sources */,
 				EFF30780267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077C267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30778267099AE00D5E1F4 /* Store.swift in Sources */,
 				EFF307662670987F00D5E1F4 /* ContentView.swift in Sources */,
 				EFF08E1E2671A91700770F3C /* Date+Extension.swift in Sources */,
 				EFF307642670987F00D5E1F4 /* WidgeterApp.swift in Sources */,
-				EFF08E0D2670D6E700770F3C /* StorageUsageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +490,7 @@
 /* Begin PBXTargetDependency section */
 		EFF08DFB2670C81D00770F3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EFF08DEB2670C81C00770F3C /* widgetExtension */;
+			target = EFF08DEB2670C81C00770F3C /* WidgetExtension */;
 			targetProxy = EFF08DFA2670C81D00770F3C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -512,11 +512,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOS Widget/widget.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6NGHAR2FG;
-				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_FILE = "iOS Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,11 +538,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "iOS Widget/widget.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_FILE = "iOS Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -677,7 +677,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Widgeter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6NGHAR2FG;
@@ -703,7 +703,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Widgeter.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6NGHAR2FG;
@@ -777,7 +777,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EFF08E002670C81D00770F3C /* Build configuration list for PBXNativeTarget "widgetExtension" */ = {
+		EFF08E002670C81D00770F3C /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EFF08DFE2670C81D00770F3C /* Debug */,
