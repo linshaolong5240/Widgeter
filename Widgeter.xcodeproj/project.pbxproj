@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF010A1B2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
+		EF010A1C2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
+		EF010A1D2672090300DB2AF9 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */; };
+		EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
+		EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
+		EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
+		EF7C07552671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
+		EF7C07562671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
+		EF7C07572671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
 		EFF08DEE2670C81C00770F3C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF08DED2670C81C00770F3C /* WidgetKit.framework */; };
 		EFF08DF02670C81C00770F3C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF08DEF2670C81C00770F3C /* SwiftUI.framework */; };
 		EFF08DF32670C81C00770F3C /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08DF22670C81C00770F3C /* widget.swift */; };
@@ -81,6 +90,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetView.swift; sourceTree = "<group>"; };
+		EF7C074D2671F07A00AA2A69 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		EF7C07582671F6BC00AA2A69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EFF08DEC2670C81C00770F3C /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF08DED2670C81C00770F3C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EFF08DEF2670C81C00770F3C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -142,6 +154,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF010A19267208DF00DB2AF9 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		EFF08DF12670C81C00770F3C /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +176,9 @@
 		EFF08E0A2670D6B600770F3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EF010A19267208DF00DB2AF9 /* Widget */,
 				EFF08E022670D0D400770F3C /* BaterryView.swift */,
+				EF7C074D2671F07A00AA2A69 /* CalendarView.swift */,
 				EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */,
 				EFF08E132671A76000770F3C /* DititalClockView.swift */,
 				EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */,
@@ -189,6 +211,7 @@
 		EFF3074F2670987D00D5E1F4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EF7C07592671F6BC00AA2A69 /* Localizable.strings */,
 				EFF307882670AD6300D5E1F4 /* Extension */,
 				EFF08E172671A77500770F3C /* Font */,
 				EFF3078526709B6600D5E1F4 /* AppConfiguration.swift */,
@@ -350,6 +373,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = EFF3074A2670987D00D5E1F4;
 			productRefGroup = EFF307582670987F00D5E1F4 /* Products */;
@@ -369,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF08E1B2671A7C300770F3C /* LESLIE.ttf in Resources */,
+				EF7C07572671F6BC00AA2A69 /* Localizable.strings in Resources */,
 				EFF08DF62670C81D00770F3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF08E192671A7C300770F3C /* LESLIE.ttf in Resources */,
+				EF7C07552671F6BC00AA2A69 /* Localizable.strings in Resources */,
 				EFF307672670987F00D5E1F4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF08E1A2671A7C300770F3C /* LESLIE.ttf in Resources */,
+				EF7C07562671F6BC00AA2A69 /* Localizable.strings in Resources */,
 				EFF307682670987F00D5E1F4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EFF08E052670D0D400770F3C /* BaterryView.swift in Sources */,
 				EFF08E092670D64900770F3C /* UIDevice+Extension.swift in Sources */,
 				EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */,
@@ -406,6 +434,7 @@
 				EFF08E1F2671A91700770F3C /* Date+Extension.swift in Sources */,
 				EFF08E122670DA7700770F3C /* ClockMarkView.swift in Sources */,
 				EFF08DF32670C81C00770F3C /* widget.swift in Sources */,
+				EF010A1D2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +444,9 @@
 			files = (
 				EFF30779267099AE00D5E1F4 /* AppError.swift in Sources */,
 				EFF3077D267099AE00D5E1F4 /* AppAction.swift in Sources */,
+				EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EFF08E0C2670D6E700770F3C /* StorageUsageView.swift in Sources */,
+				EF010A1B2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
 				EFF08E032670D0D400770F3C /* BaterryView.swift in Sources */,
 				EFF08E072670D64900770F3C /* UIDevice+Extension.swift in Sources */,
 				EFF08E1D2671A91700770F3C /* Date+Extension.swift in Sources */,
@@ -437,8 +468,10 @@
 			files = (
 				EFF3077A267099AE00D5E1F4 /* AppError.swift in Sources */,
 				EFF3077E267099AE00D5E1F4 /* AppAction.swift in Sources */,
+				EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EFF3078726709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
 				EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */,
+				EF010A1C2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
 				EFF08E082670D64900770F3C /* UIDevice+Extension.swift in Sources */,
 				EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */,
 				EFF08E042670D0D400770F3C /* BaterryView.swift in Sources */,
@@ -461,6 +494,17 @@
 			targetProxy = EFF08DFA2670C81D00770F3C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF7C07592671F6BC00AA2A69 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF7C07582671F6BC00AA2A69 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EFF08DFE2670C81D00770F3C /* Debug */ = {

@@ -45,7 +45,7 @@ struct widgetEntryView : View {
 
     var body: some View {
         #if DEBUG
-        DititalClockView(entry.date)
+        MonthWidgetView(date: entry.date)
         #else
         switch entry.configuration.timeType {
         case .time:
@@ -78,7 +78,11 @@ struct widget: Widget {
 
 struct widget_Previews: PreviewProvider {
     static var previews: some View {
-        widgetEntryView(entry: WidgetEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+                    widgetEntryView(entry: WidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+                        .previewContext(WidgetPreviewContext(family: .systemSmall))
+                    widgetEntryView(entry: WidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+                        .previewContext(WidgetPreviewContext(family: .systemMedium))
+                    widgetEntryView(entry: WidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+                        .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

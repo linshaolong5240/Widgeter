@@ -13,12 +13,24 @@ struct ContentView: View {
     private var baterry: AppState.Baterry { store.appState.baterry }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(Image(systemName: "figure.walk")) \(health.stepCount) step")
-            Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")
-            BaterryView(baterryLevel: baterry.baterryLevel, baterryStatus: baterry.baterryStatus)
-            StorageUsageView()
-            DititalClockView(Date())
+        VStack {
+            MonthView(month: Date()) { date in
+                Text(String(Calendar.current.component(.day, from: date)))
+                    //            .frame(width: 40, height: 40, alignment: .center)
+                    .frame(minWidth: 20, idealWidth: 40, maxWidth: 40, minHeight: 20, idealHeight: 40, maxHeight: 40, alignment: .center)
+                    .background(
+                        Circle()
+                            .fill(Calendar.current.isDateInToday(date) ? Color.pink : Color.blue)
+                    )
+                    .padding(.vertical, 4)
+            }
+            VStack(alignment: .leading) {
+                Text("\(Image(systemName: "figure.walk")) \(health.stepCount) step")
+                Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")
+                BaterryView(baterryLevel: baterry.baterryLevel, baterryStatus: baterry.baterryStatus)
+                StorageUsageView()
+                DititalClockView(Date())
+            }
         }.padding(.horizontal)
     }
 }
