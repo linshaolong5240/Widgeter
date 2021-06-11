@@ -65,6 +65,16 @@
 					<key>INEnumValueName</key>
 					<string>digital</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>month</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>tWzEhS</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>month</string>
+				</dict>
 			</array>
 		</dict>
 	</array>

@@ -33,9 +33,9 @@
 		EFF08E052670D0D400770F3C /* BaterryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E022670D0D400770F3C /* BaterryView.swift */; };
 		EFF08E0C2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
 		EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */; };
-		EFF08E102670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
-		EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
-		EFF08E122670DA7700770F3C /* ClockMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */; };
+		EFF08E102670DA7700770F3C /* ClockComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */; };
+		EFF08E112670DA7700770F3C /* ClockComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */; };
+		EFF08E122670DA7700770F3C /* ClockComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */; };
 		EFF08E142671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
 		EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
 		EFF08E162671A76000770F3C /* DititalClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF08E132671A76000770F3C /* DititalClockView.swift */; };
@@ -103,7 +103,7 @@
 		EFF08E012670C91700770F3C /* widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		EFF08E022670D0D400770F3C /* BaterryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaterryView.swift; sourceTree = "<group>"; };
 		EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUsageView.swift; sourceTree = "<group>"; };
-		EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockMarkView.swift; sourceTree = "<group>"; };
+		EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockComponentView.swift; sourceTree = "<group>"; };
 		EFF08E132671A76000770F3C /* DititalClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DititalClockView.swift; sourceTree = "<group>"; };
 		EFF08E182671A7C300770F3C /* LESLIE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LESLIE.ttf; sourceTree = "<group>"; };
 		EFF08E1C2671A91700770F3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				EF010A19267208DF00DB2AF9 /* Widget */,
 				EFF08E022670D0D400770F3C /* BaterryView.swift */,
 				EF7C074D2671F07A00AA2A69 /* CalendarView.swift */,
-				EFF08E0F2670DA7700770F3C /* ClockMarkView.swift */,
+				EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */,
 				EFF08E132671A76000770F3C /* DititalClockView.swift */,
 				EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */,
 			);
@@ -437,7 +437,7 @@
 				EFF08DF82670C81D00770F3C /* widget.intentdefinition in Sources */,
 				EFF08E162671A76000770F3C /* DititalClockView.swift in Sources */,
 				EFF08E1F2671A91700770F3C /* Date+Extension.swift in Sources */,
-				EFF08E122670DA7700770F3C /* ClockMarkView.swift in Sources */,
+				EFF08E122670DA7700770F3C /* ClockComponentView.swift in Sources */,
 				EFF08DF32670C81C00770F3C /* widget.swift in Sources */,
 				EF010A1D2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
 			);
@@ -460,7 +460,7 @@
 				EFF3077F267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077B267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30777267099AE00D5E1F4 /* Store.swift in Sources */,
-				EFF08E102670DA7700770F3C /* ClockMarkView.swift in Sources */,
+				EFF08E102670DA7700770F3C /* ClockComponentView.swift in Sources */,
 				EFF08E142671A76000770F3C /* DititalClockView.swift in Sources */,
 				EFF307652670987F00D5E1F4 /* ContentView.swift in Sources */,
 				EFF307632670987F00D5E1F4 /* WidgeterApp.swift in Sources */,
@@ -479,7 +479,7 @@
 				EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */,
 				EF010A2F26722BF400DB2AF9 /* Device.swift in Sources */,
 				EF010A1C2672090300DB2AF9 /* MonthWidgetView.swift in Sources */,
-				EFF08E112670DA7700770F3C /* ClockMarkView.swift in Sources */,
+				EFF08E112670DA7700770F3C /* ClockComponentView.swift in Sources */,
 				EFF30780267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077C267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30778267099AE00D5E1F4 /* Store.swift in Sources */,
