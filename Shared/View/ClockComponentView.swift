@@ -139,14 +139,14 @@ struct ClockWidgetView_Previews: PreviewProvider {
                     .frame(width: 2, height: 10, alignment: .center)
             }
             ClockMarkView(12) { index in
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 3, height: 18, alignment: .center)
-            }
-            ClockMarkView(12) { index in
-                Circle()
-                    .fill(Color.green)
-                    .frame(width: 8, height: 8, alignment: .center)
+                VStack(spacing: 0) {
+                    Circle()
+                            .fill(Color.green)
+                        .frame(width: 8, height: 8, alignment: .center)
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: 3, height: 10, alignment: .center)
+                }
             }
             ClockMarkView(12, origin: true) { index in
                 Text("\(index == 0 ? 12 : index)")
@@ -161,7 +161,7 @@ struct ClockWidgetView_Previews: PreviewProvider {
                     .fill(Color.green)
                     .frame(width: 3, height: 50, alignment: .center)
             }
-            ClockNeedleView(Date() + 5, for: .second) {
+            ClockNeedleView(Date(), for: .second) {
                 Rectangle()
                     .fill(Color.pink)
                     .frame(width: 3, height: 60, alignment: .center)

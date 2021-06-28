@@ -4,7 +4,7 @@
 //
 //  Created by 林少龙 on 2021/6/9.
 //
-
+import WidgetKit
 import SwiftUI
 
 struct ContentView: View {
@@ -14,16 +14,8 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            MonthView(month: Date()) { date in
-                Text(String(Calendar.current.component(.day, from: date)))
-                    //            .frame(width: 40, height: 40, alignment: .center)
-                    .frame(minWidth: 20, idealWidth: 40, maxWidth: .infinity, minHeight: 20, idealHeight: 40, maxHeight: 40, alignment: .center)
-                    .background(
-                        Circle()
-                            .fill(Calendar.current.isDateInToday(date) ? Color.pink : Color.blue)
-                    )
-                    .padding(.vertical, 4)
-            }
+            MonthWidgetView(date: Date())
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
             VStack(alignment: .leading) {
                 Text("\(Image(systemName: "figure.walk")) \(health.stepCount) step")
                 Text("\(Image(systemName: "figure.walk")) \(health.distanceWalkingRunning) m")

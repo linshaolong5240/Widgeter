@@ -47,6 +47,16 @@ struct MonthWidgetView: View {
                 )
         }
         .padding()
+//        .overlay(
+//            VStack {
+//                switch family {
+//                case .systemSmall: Text("systemSmall")
+//                case .systemMedium: Text("systemMedium")
+//                case .systemLarge: Text("systemLarge")
+//                default: Text("default")
+//                }
+//            }
+//        )
     }
 }
 

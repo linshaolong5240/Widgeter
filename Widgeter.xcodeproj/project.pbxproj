@@ -16,6 +16,9 @@
 		EF010A2E26722BF400DB2AF9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A2D26722BF400DB2AF9 /* Device.swift */; };
 		EF010A2F26722BF400DB2AF9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A2D26722BF400DB2AF9 /* Device.swift */; };
 		EF010A3026722BF400DB2AF9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF010A2D26722BF400DB2AF9 /* Device.swift */; };
+		EF157B4226897F2E00CCCE87 /* DaysCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B4126897F2E00CCCE87 /* DaysCountdownView.swift */; };
+		EF157B4326897F2E00CCCE87 /* DaysCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B4126897F2E00CCCE87 /* DaysCountdownView.swift */; };
+		EF157B4426897F2E00CCCE87 /* DaysCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B4126897F2E00CCCE87 /* DaysCountdownView.swift */; };
 		EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
@@ -91,6 +94,7 @@
 /* Begin PBXFileReference section */
 		EF010A1A2672090300DB2AF9 /* MonthWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetView.swift; sourceTree = "<group>"; };
 		EF010A2D26722BF400DB2AF9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		EF157B4126897F2E00CCCE87 /* DaysCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCountdownView.swift; sourceTree = "<group>"; };
 		EF7C074D2671F07A00AA2A69 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EF7C07582671F6BC00AA2A69 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EFF08DEC2670C81C00770F3C /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +189,7 @@
 				EFF08E022670D0D400770F3C /* BaterryView.swift */,
 				EF7C074D2671F07A00AA2A69 /* CalendarView.swift */,
 				EFF08E0F2670DA7700770F3C /* ClockComponentView.swift */,
+				EF157B4126897F2E00CCCE87 /* DaysCountdownView.swift */,
 				EFF08E132671A76000770F3C /* DititalClockView.swift */,
 				EFF08E0B2670D6E700770F3C /* StorageUsageView.swift */,
 			);
@@ -433,6 +438,7 @@
 				EF010A3026722BF400DB2AF9 /* Device.swift in Sources */,
 				EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EFF08E052670D0D400770F3C /* BaterryView.swift in Sources */,
+				EF157B4426897F2E00CCCE87 /* DaysCountdownView.swift in Sources */,
 				EFF08E0E2670D6E700770F3C /* StorageUsageView.swift in Sources */,
 				EFF08DF82670C81D00770F3C /* widget.intentdefinition in Sources */,
 				EFF08E162671A76000770F3C /* DititalClockView.swift in Sources */,
@@ -457,6 +463,7 @@
 				EFF08E1D2671A91700770F3C /* Date+Extension.swift in Sources */,
 				EFF3078626709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
 				EFF08DF92670C81D00770F3C /* widget.intentdefinition in Sources */,
+				EF157B4226897F2E00CCCE87 /* DaysCountdownView.swift in Sources */,
 				EFF3077F267099AE00D5E1F4 /* AppCommand.swift in Sources */,
 				EFF3077B267099AE00D5E1F4 /* AppState.swift in Sources */,
 				EFF30777267099AE00D5E1F4 /* Store.swift in Sources */,
@@ -471,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF157B4326897F2E00CCCE87 /* DaysCountdownView.swift in Sources */,
 				EFF3077A267099AE00D5E1F4 /* AppError.swift in Sources */,
 				EF010A2C26722BBD00DB2AF9 /* StorageUsageView.swift in Sources */,
 				EFF3077E267099AE00D5E1F4 /* AppAction.swift in Sources */,
