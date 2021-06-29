@@ -337,8 +337,10 @@ struct ClockComponentView_Previews: PreviewProvider {
                 }
                 ClockMarkView(12, origin: true) { index in
                     Text("\(index == 0 ? 12 : index)")
+                        .font(.system(size: 12))
                         .foregroundColor(.black)
-                }.padding()
+                        .padding(.all, 5)
+                }
                 ClockNeedleView(Date(), for: .hour) {
                     Rectangle()
                         .fill(Color.blue)
@@ -374,7 +376,7 @@ struct ClockComponentView_Previews: PreviewProvider {
                 ClockTemplateCornerGaugeTextView(percent: 0.25, color: .green, position: .bottomTrailing, text: Text("63%"))
             }
         }
-        .previewContext(WidgetPreviewContext(family: .systemSmall))
+        .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
 #endif
