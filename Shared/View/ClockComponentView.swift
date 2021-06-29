@@ -4,7 +4,7 @@
 //
 //  Created by 林少龙 on 2021/6/9.
 //
-
+import WidgetKit
 import SwiftUI
 
 protocol ColckMarkStyle {
@@ -129,47 +129,252 @@ struct ClockNeedleView<NeedleView: View>: View {
     }
 }
 
+enum ClockCorner {
+    case topLeading
+    case topTrailing
+    case bottomLeading
+    case bottomTrailing
+    var startAngle: Angle {
+        switch self {
+        case .topLeading, .topTrailing: return .degrees(33 * 6)
+        case .bottomLeading, .bottomTrailing: return .degrees(3 * 6)
+        }
+    }
+    var endAngle: Angle {
+        switch self {
+        case .topLeading, .topTrailing: return .degrees(42 * 6)
+        case .bottomLeading, .bottomTrailing: return .degrees(12 * 6)
+        }
+    }
+    func percentAngle(_ percent: Double) -> Angle {
+        switch self {
+        case .topLeading, .topTrailing: return .degrees(percent * 9 * 6)
+        case .bottomLeading, .bottomTrailing: return .degrees((1 - percent) * 9 * 6)
+        }
+    }
+    var isTop: Bool {
+        switch self {
+        case .topLeading, .topTrailing: return true
+        case .bottomLeading, .bottomTrailing: return false
+        }
+    }
+    var alignment: Alignment {
+        switch self {
+        case .topLeading:       return .topLeading
+        case .topTrailing:         return .topTrailing
+        case .bottomLeading:    return .bottomLeading
+        case .bottomTrailing:      return .bottomTrailing
+        }
+    }
+    var cornerPadding: Edge.Set {
+        switch  self {
+        case .topLeading:       return [.top, .leading]
+        case .topTrailing:         return [.top, .trailing]
+        case .bottomLeading:    return [.bottom, .leading]
+        case .bottomTrailing:      return [.bottom, .trailing]
+        }
+    }
+    
+    var textAngle: Angle {
+        switch  self {
+        case .topLeading:       return .degrees(-45)
+        case .topTrailing:         return .degrees(45)
+        case .bottomLeading:    return .degrees(45)
+        case .bottomTrailing:      return .degrees(-45)
+        }
+    }
+}
+
+struct ClockTemplateCornerGaugeImageView<Content: View>: View {
+    let percent: Double
+    let color: Color
+    let position: ClockCorner
+    let leadingText: Text?
+    let trailingText: Text?
+    let content: (_ value: Double) -> Content
+    
+    init(percent: Double,
+         color: Color,
+         position: ClockCorner,
+         leadingText: Text? = nil,
+         trailingText: Text? = nil,
+         @ViewBuilder content: @escaping (_ value: Double) -> Content) {
+        self.percent = percent
+        self.color = color
+        self.position = position
+        self.leadingText = leadingText
+        self.trailingText = trailingText
+        self.content = content
+    }
+    
+    var body: some View {
+        ZStack(alignment: position.alignment) {
+            content(percent)
+                .padding(position.cornerPadding, 6)
+            GeometryReader { geometry in
+                let minLength = min(geometry.size.width, geometry.size.height)
+                let radius = minLength * 0.46
+                let strokeLineWidth = minLength * 0.03
+                ZStack {
+                    ZStack {
+                        Path { path in
+                            path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: position.startAngle, endAngle: position.endAngle, clockwise: false)
+                        }
+                        .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                        Path { path in
+                            path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0),
+                                        radius: radius,
+                                        startAngle: position.startAngle + (position.isTop ? .degrees(0) : position.percentAngle(percent)),
+                                        endAngle: position.isTop ? position.startAngle + position.percentAngle(percent) : position.endAngle,
+                                        clockwise: false)
+                        }
+                        .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                    }
+                    VStack {
+                        if !position.isTop { Spacer() }
+                        leadingText?.font(.system(size: 10)).foregroundColor(.white)
+                        if position.isTop { Spacer() }
+                    }
+                    .rotationEffect(.degrees(position.isTop ? -78 : -6))
+                    VStack {
+                        if !position.isTop { Spacer() }
+                        trailingText?.font(.system(size: 10)).foregroundColor(.white)
+                        if position.isTop { Spacer() }
+                    }
+                    .rotationEffect(.degrees(position.isTop ? -6 : -84))
+                }
+                .rotationEffect(.degrees(position == .topTrailing ? 90 : 0))
+                .rotationEffect(.degrees(position == .bottomLeading ? 90 : 0))
+            }
+        }
+    }
+}
+
+struct ClockTemplateCornerGaugeTextView: View {
+    let percent: Double
+    let color: Color
+    let position: ClockCorner
+    let leadingText: Text?
+    let trailingText: Text?
+    let text: Text
+    
+    init(percent: Double,
+         color: Color,
+         position: ClockCorner,
+         leadingText: Text? = nil,
+         trailingText: Text? = nil,
+         text: Text) {
+        self.percent = percent
+        self.color = color
+        self.position = position
+        self.leadingText = leadingText
+        self.trailingText = trailingText
+        self.text = text
+    }
+    
+    var body: some View {
+        ZStack(alignment: position.alignment) {
+            text
+                .font(.system(size: 12))
+                .foregroundColor(.white)
+                .rotationEffect(position.textAngle)
+                .padding(position.cornerPadding, 10)
+            GeometryReader { geometry in
+                let minLength = min(geometry.size.width, geometry.size.height)
+                let radius = minLength * 0.46
+                let strokeLineWidth = minLength * 0.03
+                ZStack {
+                    ZStack {
+                        Path { path in
+                            path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: position.startAngle, endAngle: position.endAngle, clockwise: false)
+                        }
+                        .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                        Path { path in
+                            path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0),
+                                        radius: radius,
+                                        startAngle: position.startAngle + (position.isTop ? .degrees(0) : position.percentAngle(percent)),
+                                        endAngle: position.isTop ? position.startAngle + position.percentAngle(percent) : position.endAngle,
+                                        clockwise: false)
+                        }
+                        .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                    }
+                    VStack {
+                        if !position.isTop { Spacer() }
+                        leadingText?.font(.system(size: 10)).foregroundColor(.white)
+                        if position.isTop { Spacer() }
+                    }
+                    .rotationEffect(.degrees(position.isTop ? -84 : -6))
+                    VStack {
+                        if !position.isTop { Spacer() }
+                        trailingText?.font(.system(size: 10)).foregroundColor(.white)
+                        if position.isTop { Spacer() }
+                    }
+                    .rotationEffect(.degrees(position.isTop ? -6 : -84))
+                }
+                .rotationEffect(.degrees(position == .topTrailing ? 90 : 0))
+                .rotationEffect(.degrees(position == .bottomLeading ? 90 : 0))
+            }
+        }
+    }
+}
+
 #if DEBUG
-struct ClockWidgetView_Previews: PreviewProvider {
+struct ClockComponentView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            ClockMarkView(24) { index in
-                Rectangle()
-                    .fill(Color.red)
-                    .frame(width: 2, height: 10, alignment: .center)
-            }
-            ClockMarkView(12) { index in
-                VStack(spacing: 0) {
-                    Circle()
-                            .fill(Color.green)
-                        .frame(width: 8, height: 8, alignment: .center)
+            Color.black
+            ZStack {
+                Circle().fill(Color.white)
+                ClockMarkView(60) { index in
+                    Rectangle()
+                        .fill(Color.secondary)
+                        .frame(width: 1, height: 5, alignment: .center)
+                }
+                ClockMarkView(12) { index in
                     Rectangle()
                         .fill(Color.black)
-                        .frame(width: 3, height: 10, alignment: .center)
+                        .frame(width: 1, height: 5, alignment: .center)
                 }
+                ClockMarkView(12, origin: true) { index in
+                    Text("\(index == 0 ? 12 : index)")
+                        .foregroundColor(.black)
+                }.padding()
+                ClockNeedleView(Date(), for: .hour) {
+                    Rectangle()
+                        .fill(Color.blue)
+                        .frame(width: 5, height: 40, alignment: .center)
+                }
+                ClockNeedleView(Date(), for: .minute) {
+                    Rectangle()
+                        .fill(Color.green)
+                        .frame(width: 3, height: 50, alignment: .center)
+                }
+                ClockNeedleView(Date(), for: .second) {
+                    Rectangle()
+                        .fill(Color.pink)
+                        .frame(width: 3, height: 60, alignment: .center)
+                }
+                Circle()
+                    .frame(width: 5, height: 5, alignment: .center)
             }
-            ClockMarkView(12, origin: true) { index in
-                Text("\(index == 0 ? 12 : index)")
-            }.padding()
-            ClockNeedleView(Date(), for: .hour) {
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 5, height: 40, alignment: .center)
+            .padding()
+            Group {
+                ClockTemplateCornerGaugeImageView(percent: 0.5, color: .blue, position: .topLeading, leadingText: Text("0"), trailingText: Text("100")) { value in
+                    Image(systemName: "speaker.wave.2")
+                        .foregroundColor(.blue)
+                }
+                ClockTemplateCornerGaugeImageView(percent: 0.7, color: .orange, position: .topTrailing, leadingText: Text("0"), trailingText: Text("100")) { value in
+                    Image(systemName: "sun.max")
+                        .foregroundColor(.orange)
+                }
+//                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .topLeading, text: Text("63%"))
+//                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .topTrailling, text: Text("63%"))
+
+                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .bottomLeading, text: Text("63%"))
+                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .green, position: .bottomTrailing, text: Text("63%"))
             }
-            ClockNeedleView(Date(), for: .minute) {
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(width: 3, height: 50, alignment: .center)
-            }
-            ClockNeedleView(Date(), for: .second) {
-                Rectangle()
-                    .fill(Color.pink)
-                    .frame(width: 3, height: 60, alignment: .center)
-            }
-            Circle()
-                .frame(width: 5, height: 5, alignment: .center)
         }
-        .frame(width: 200, height: 200, alignment: .center)
+        .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
 #endif
