@@ -29,8 +29,10 @@ struct WatchFaceWidgetView: View {
                         }
                         ClockMarkView(12, origin: true) { index in
                             Text("\(index == 0 ? 12 : index)")
-                                .font(.system(size: 12))
+                                .font(.system(size: 16))
+                                .minimumScaleFactor(0.5)
                                 .foregroundColor(.black)
+                                .frame(width: minLength / 10 , height: minLength / 10)
                                 .padding(.all, 5)
                         }
                         ClockNeedleView(Date(), for: .hour) {
@@ -51,7 +53,7 @@ struct WatchFaceWidgetView: View {
                         Circle()
                             .frame(width: 5, height: 5, alignment: .center)
                     }
-                    .padding()
+                    .frame(width: minLength * 0.85)
                     Group {
                         ClockTemplateCornerGaugeImageView(percent: 0.5, color: .blue, position: .topLeading, leadingText: Text("0"), trailingText: Text("100")) { value in
                             Image(systemName: "speaker.wave.2")
@@ -77,7 +79,11 @@ struct WatchFaceWidgetView: View {
 
 struct WatchFaceWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchFaceWidgetView()
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+        }
     }
 }

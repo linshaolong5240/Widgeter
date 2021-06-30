@@ -233,15 +233,17 @@ struct ClockTemplateCornerGaugeImageView<Content: View>: View {
                     }
                     VStack {
                         if !position.isTop { Spacer() }
-                        leadingText?.font(.system(size: 10)).foregroundColor(.white)
+                        leadingText?.font(.system(size: minLength / 16.0)).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
+                    .frame(height: minLength * 0.99)
                     .rotationEffect(.degrees(position.isTop ? -78 : -6))
                     VStack {
                         if !position.isTop { Spacer() }
-                        trailingText?.font(.system(size: 10)).foregroundColor(.white)
+                        trailingText?.font(.system(size: minLength / 16.0)).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
+                    .frame(height: minLength * 0.99)
                     .rotationEffect(.degrees(position.isTop ? -6 : -84))
                 }
                 .rotationEffect(.degrees(position == .topTrailing ? 90 : 0))
@@ -325,8 +327,14 @@ struct ClockTemplateCornerGaugeTextView: View {
 #if DEBUG
 struct ClockComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchFaceWidgetView()
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
+        Group {
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+        }
     }
 }
 #endif
