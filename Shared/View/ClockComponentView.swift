@@ -324,16 +324,65 @@ struct ClockTemplateCornerGaugeTextView: View {
     }
 }
 
+struct ClockTemplateCircularOpenGaugeImaageTextView: View {
+    let percent: Double
+    let color: Color
+    let leadingText: Text?
+    let trailingText: Text?
+    let centerText: Text
+    
+    init(percent: Double,
+         color: Color,
+         leadingText: Text? = nil,
+         trailingText: Text? = nil,
+         centerText: Text) {
+        self.percent = percent
+        self.color = color
+        self.leadingText = leadingText
+        self.trailingText = trailingText
+        self.centerText = centerText
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            let strokeLineWidth = minLength * 0.03
+            ZStack {
+                Color.blue
+                CircularOpenGaugeView(percent)
+//                .background(Color.yellow)
+                centerText
+                    .font(.system(size: minLength / 5.0))
+                VStack {
+                    Circle().stroke(Color.black, lineWidth: 5).frame(width: strokeLineWidth)
+                    VStack{Spacer()}.frame(height: .infinity).background(Color.green)
+                }
+//                .background(Color.pink)
+                VStack {
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .padding()
+                        .frame(width: minLength / 3.0, height: minLength / 3.0)
+                }
+            }
+        }
+    }
+}
+
 #if DEBUG
 struct ClockComponentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            WatchFaceWidgetView()
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            WatchFaceWidgetView()
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            WatchFaceWidgetView()
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            ClockTemplateCircularOpenGaugeImaageTextView(percent: 0.5, color: .green, centerText: Text("asd"))
+                .frame(width: 200, height: 200, alignment: .center)
+            
+//            WatchFaceWidgetView()
+//                .previewContext(WidgetPreviewContext(family: .systemSmall))
+//            WatchFaceWidgetView()
+//                .previewContext(WidgetPreviewContext(family: .systemMedium))
+//            WatchFaceWidgetView()
+//                .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
 }

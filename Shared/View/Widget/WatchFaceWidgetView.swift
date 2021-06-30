@@ -83,6 +83,8 @@ struct WatchFaceWidgetView_Previews: PreviewProvider {
             WatchFaceWidgetView()
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            WatchFaceWidgetView()
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
