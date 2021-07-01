@@ -270,30 +270,87 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
         ZStack {
             let percent = 0.5
             Color.white.ignoresSafeArea()
-            VStack {
-                CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent), centerTextProvider: Text("\(Int(percent * 100))%"))
-                CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGaugeView(percent),
-                                                centerTextProvider: Text("345555"),
-                                                bottomTextProvider: Text("AQI"))
-                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGaugeRangeView(percent),
-                                               leadingTextProvider: Text("24"),
-                                               centerTextProvider: Text("28°C"),
-                                               trailingTextProvider: Text("31"))
-                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
-                                                                                                 colors: [.blue, .green, .yellow, .orange, .pink, .red]),
-                                               leadingTextProvider: Text("24"),
-                                               centerTextProvider: Text("28°C"),
-                                               trailingTextProvider: Text("31"))
-                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
-                                               centerTextProvider: Text("\(Int(percent * 100))%"),
-                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
-                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
-                                                                                            colors: [.blue, .green, .yellow, .orange, .pink, .red]),
-                                               centerTextProvider: Text("\(String(format: "%.2f", percent))"),
-                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
-            }
-            .frame(width: 50)
+//            VStack {
+//                CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent), centerTextProvider: Text("\(Int(percent * 100))%"))
+//                CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGaugeView(percent),
+//                                                centerTextProvider: Text("345555"),
+//                                                bottomTextProvider: Text("AQI"))
+//                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGaugeRangeView(percent),
+//                                               leadingTextProvider: Text("24"),
+//                                               centerTextProvider: Text("28°C"),
+//                                               trailingTextProvider: Text("31"))
+//                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
+//                                                                                                 colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+//                                               leadingTextProvider: Text("24"),
+//                                               centerTextProvider: Text("28°C"),
+//                                               trailingTextProvider: Text("31"))
+//                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
+//                                               centerTextProvider: Text("\(Int(percent * 100))%"),
+//                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
+//                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
+//                                                                                            colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+//                                               centerTextProvider: Text("\(String(format: "%.2f", percent))"),
+//                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
+//            }
+//            .frame(width: 50)
+            
+                        ClockFuncView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent),
+                                                                                  centerTextProvider: Text("\(Int(percent * 100))%"))),
+                                      bottom: AnyView(CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
+                                                                                                                                        colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+                                                                                     centerTextProvider: Text("345555"),
+                                                                                     bottomTextProvider: Text("AQI"))),
+                                      left: AnyView(CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
+                                                                                                                                     colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+                                                                                   leadingTextProvider: Text("24"),
+                                                                                   centerTextProvider: Text("28°C"),
+                                                                                   trailingTextProvider: Text("31"))),
+                                      right: AnyView(CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
+                                                                                    centerTextProvider: Text("\(String(format: "%.2f", percent))"),
+                                                                                    bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })))
         }
     }
 }
 #endif
+
+struct ClockFuncView: View {
+    let top: AnyView
+    let bottom: AnyView
+    let left: AnyView
+    let right: AnyView
+    
+    init(top: AnyView,
+         bottom: AnyView,
+         left: AnyView,
+         right: AnyView) {
+        self.top = top
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+    }
+
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            ZStack {
+                ZStack {
+                    VStack {
+                        top
+                        Spacer()
+                            .frame(height: minLength / 3.0)
+                        bottom
+                    }
+                    HStack {
+                        left
+                        Spacer()
+                            .frame(width: minLength / 3.0)
+                        right
+                    }
+                }
+                .frame(width: minLength, height: minLength, alignment: .center)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+        }
+//        .background(Color.pink)
+    }
+}
