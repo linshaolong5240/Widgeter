@@ -233,14 +233,14 @@ struct ClockTemplateCornerGaugeImageView<Content: View>: View {
                     }
                     VStack {
                         if !position.isTop { Spacer() }
-                        leadingText?.font(.system(size: minLength / 16.0)).foregroundColor(.white)
+                        leadingText?.font(.system(size: minLength / 16.0)).lineLimit(1).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
                     .frame(height: minLength * 0.99)
                     .rotationEffect(.degrees(position.isTop ? -78 : -6))
                     VStack {
                         if !position.isTop { Spacer() }
-                        trailingText?.font(.system(size: minLength / 16.0)).foregroundColor(.white)
+                        trailingText?.font(.system(size: minLength / 16.0)).lineLimit(1).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
                     .frame(height: minLength * 0.99)
@@ -285,6 +285,7 @@ struct ClockTemplateCornerGaugeTextView: View {
                 text
                     .font(.system(size: 26))
                     .minimumScaleFactor(0.4)
+                    .lineLimit(1)
                     .foregroundColor(.white)
                     .rotationEffect(position.textAngle)
                     .frame(width: minLength / 5.0, height: minLength / 5.0, alignment: .center)
@@ -306,13 +307,13 @@ struct ClockTemplateCornerGaugeTextView: View {
                     }
                     VStack {
                         if !position.isTop { Spacer() }
-                        leadingText?.font(.system(size: 10)).foregroundColor(.white)
+                        leadingText?.font(.system(size: 10)).lineLimit(1).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
                     .rotationEffect(.degrees(position.isTop ? -84 : -6))
                     VStack {
                         if !position.isTop { Spacer() }
-                        trailingText?.font(.system(size: 10)).foregroundColor(.white)
+                        trailingText?.font(.system(size: 10)).lineLimit(1).foregroundColor(.white)
                         if position.isTop { Spacer() }
                     }
                     .rotationEffect(.degrees(position.isTop ? -6 : -84))
@@ -324,65 +325,16 @@ struct ClockTemplateCornerGaugeTextView: View {
     }
 }
 
-struct ClockTemplateCircularOpenGaugeImaageTextView: View {
-    let percent: Double
-    let color: Color
-    let leadingText: Text?
-    let trailingText: Text?
-    let centerText: Text
-    
-    init(percent: Double,
-         color: Color,
-         leadingText: Text? = nil,
-         trailingText: Text? = nil,
-         centerText: Text) {
-        self.percent = percent
-        self.color = color
-        self.leadingText = leadingText
-        self.trailingText = trailingText
-        self.centerText = centerText
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            let minLength = min(geometry.size.width, geometry.size.height)
-            let strokeLineWidth = minLength * 0.03
-            ZStack {
-                Color.blue
-                CircularOpenGaugeView(percent)
-//                .background(Color.yellow)
-                centerText
-                    .font(.system(size: minLength / 5.0))
-                VStack {
-                    Circle().stroke(Color.black, lineWidth: 5).frame(width: strokeLineWidth)
-                    VStack{Spacer()}.frame(height: .infinity).background(Color.green)
-                }
-//                .background(Color.pink)
-                VStack {
-                    Spacer()
-                    Image(systemName: "heart.fill")
-                        .resizable()
-                        .padding()
-                        .frame(width: minLength / 3.0, height: minLength / 3.0)
-                }
-            }
-        }
-    }
-}
-
 #if DEBUG
 struct ClockComponentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ClockTemplateCircularOpenGaugeImaageTextView(percent: 0.5, color: .green, centerText: Text("asd"))
-                .frame(width: 200, height: 200, alignment: .center)
-            
-//            WatchFaceWidgetView()
-//                .previewContext(WidgetPreviewContext(family: .systemSmall))
-//            WatchFaceWidgetView()
-//                .previewContext(WidgetPreviewContext(family: .systemMedium))
-//            WatchFaceWidgetView()
-//                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            WatchFaceWidgetView()
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
     }
 }

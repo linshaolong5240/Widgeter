@@ -2,12 +2,14 @@
 //  CircularOpenGaugeView.swift
 //  Widgeter
 //
-//  Created by qfdev on 2021/6/30.
+//  Created by 林少龙 on 2021/6/30.
 //
 
 import SwiftUI
 
-struct CircularClosedGaugeView: View {
+protocol GaugeProvider: View { }
+
+struct CircularClosedGaugeView: GaugeProvider {
     let percent: Double
     let color: Color
 
@@ -19,172 +21,114 @@ struct CircularClosedGaugeView: View {
     var body: some View {
         GeometryReader { geometry in
             let minLength = min(geometry.size.width, geometry.size.height)
+            let center = CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0)
             let strokeLineWidth = minLength * 0.1
             let radius = (minLength - strokeLineWidth) / 2.0
+            let startAngle: Angle = .degrees(-90)
+            let endAngle: Angle = .degrees(270)
             Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(0), endAngle: .degrees(360), clockwise: false)
+                path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
             }
             .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
             Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(-90), endAngle: .degrees(-90 + 360 * percent), clockwise: false)
+                path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: startAngle + (endAngle - startAngle) * percent, clockwise: false)
             }
             .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
         }
     }
 }
 
-struct CircularClosedGaugeTextView: View {
+struct CircularOpenGaugeView: GaugeProvider {
     let percent: Double
     let color: Color
-    let centerTextPrivider: Text
-
+    let startAngle: Angle
+    let endAngle: Angle
+    
     init(_ percent: Double,
          color: Color = .accentColor,
-         centerTextPrivider: Text
-         ) {
+         startAngle: Angle = .degrees(135),
+         endAngle: Angle = .degrees(405)) {
         self.color = color
         self.percent = percent
-        self.centerTextPrivider = centerTextPrivider
+        self.startAngle = startAngle
+        self.endAngle = endAngle
     }
     
     var body: some View {
         GeometryReader { geometry in
             let minLength = min(geometry.size.width, geometry.size.height)
-            ZStack {
-                CircularClosedGaugeView(percent, color: color)
-                centerTextPrivider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1).frame(width: minLength * 0.8)
+            let center = CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0)
+            let strokeLineWidth = minLength * 0.1
+            let radius = (minLength - strokeLineWidth) / 2.0
+            Path { path in
+                path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
             }
+            .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+            Path { path in
+                path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: startAngle + (endAngle - startAngle) * percent, clockwise: false)
+            }
+            .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
         }
     }
 }
 
-struct CircularOpenGaugeView: View {
+struct CircularOpenGaugeRangeView: GaugeProvider {
     let percent: Double
     let color: Color
 
     init(_ percent: Double, color: Color = .accentColor) {
-        self.color = color
         self.percent = percent
+        self.color = color
+    }
+    
+    var body: some View {
+        CircularOpenGaugeView(percent, color: color, startAngle: .degrees(150), endAngle: .degrees(390))
+    }
+}
+
+struct CircularOpenGradientGaugeView: GaugeProvider {
+    let percent: Double
+    let colors: [Color]
+    let startAngle: Angle
+    let endAngle: Angle
+
+    init(_ percent: Double,
+         colors: [Color] = [.white, .accentColor],
+         startAngle: Angle = .degrees(135),
+         endAngle: Angle = .degrees(405)) {
+        self.percent = percent
+        self.colors = colors
+        self.startAngle = startAngle
+        self.endAngle = endAngle
     }
     
     var body: some View {
         GeometryReader { geometry in
             let minLength = min(geometry.size.width, geometry.size.height)
             let strokeLineWidth = minLength * 0.1
+            let center: CGPoint = CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0)
             let radius = (minLength - strokeLineWidth) / 2.0
-            Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(135), endAngle: .degrees(405), clockwise: false)
-            }
-            .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
-            Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(135), endAngle: .degrees(135 + 270 * percent), clockwise: false)
-            }
-            .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
-        }
-    }
-}
-
-struct CircularOpenGaugeImageTextView<Content: View>: View {
-    let percent: Double
-    let color: Color
-    let centerTextPrivider: Text
-    let bottomImagePrivider: (_ value: Double) -> Content
-
-    init(_ percent: Double,
-         color: Color = .accentColor,
-         centerTextPrivider: Text,
-         @ViewBuilder bottomImagePrivider: @escaping (_ value: Double) -> Content
-         ) {
-        self.color = color
-        self.percent = percent
-        self.centerTextPrivider = centerTextPrivider
-        self.bottomImagePrivider = bottomImagePrivider
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            let minLength = min(geometry.size.width, geometry.size.height)
             ZStack {
-                CircularOpenGaugeView(percent, color: color)
-                centerTextPrivider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1).frame(width: minLength * 0.8)
+                Path { path in
+                    path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+                }
+                .stroke(AngularGradient(
+                            gradient: Gradient(colors: colors),
+                            center: .center,
+                            startAngle: startAngle,
+                            endAngle: endAngle), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
                 VStack {
                     Spacer()
-                    bottomImagePrivider(percent)
-                        .frame(width: minLength / 5.0, height: minLength / 5.0)
+                    Circle().stroke(Color.black, lineWidth: strokeLineWidth / 5.0)
+                        .frame(width: strokeLineWidth, height: strokeLineWidth, alignment: .center)
                 }
+                .rotationEffect((startAngle - .degrees(90)) + (endAngle - startAngle) * percent )
             }
         }
     }
 }
 
-struct CircularOpenGaugeRangeView: View {
-    let percent: Double
-    let color: Color
-
-    init(_ percent: Double, color: Color = .accentColor) {
-        self.percent = percent
-        self.color = color
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            let minLength = min(geometry.size.width, geometry.size.height)
-            let strokeLineWidth = minLength * 0.1
-            let radius = (minLength - strokeLineWidth) / 2.0
-            Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(150), endAngle: .degrees(30), clockwise: false)
-            }
-            .stroke(color.opacity(0.35), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
-            Path { path in
-                path.addArc(center: CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0), radius: radius, startAngle: .degrees(150), endAngle: .degrees(150 + 240 * percent), clockwise: false)
-            }
-            .stroke(color, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
-        }
-    }
-}
-
-struct CircularOpenGaugeRangeTextView: View {
-    let percent: Double
-    let color: Color
-    let leadingTextPrivider: Text
-    let centerTextPrivider: Text
-    let trailingPrivider: Text
-    
-    init(_ percent: Double,
-         color: Color = .accentColor,
-         leadingTextPrivider: Text,
-         centerTextPrivider: Text,
-         trailingTextPrivider: Text) {
-        self.percent = percent
-        self.color = color
-        self.leadingTextPrivider = leadingTextPrivider
-        self.centerTextPrivider = centerTextPrivider
-        self.trailingPrivider = trailingTextPrivider
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            let minLength = min(geometry.size.width, geometry.size.height)
-            ZStack {
-                CircularOpenGaugeRangeView(percent, color: color)
-                ZStack {
-                    VStack {
-                        Spacer()
-                        HStack{
-                            leadingTextPrivider.font(.system(size: minLength / 6)).minimumScaleFactor(0.1).lineLimit(1)
-                            Spacer()
-                            trailingPrivider.font(.system(size: minLength / 6)).minimumScaleFactor(0.1).lineLimit(1)
-                        }
-                    }
-                    centerTextPrivider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1)
-                }
-                .frame(width: minLength * 0.7, height: minLength)
-            }
-        }
-    }
-}
-
-struct CircularOpenGradientGaugeView: View {
+struct CircularOpenGradientGaugeRangeView: GaugeProvider {
     let percent: Double
     let colors: [Color]
 
@@ -194,60 +138,123 @@ struct CircularOpenGradientGaugeView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            let minLength = min(geometry.size.width, geometry.size.height)
-            let strokeLineWidth = minLength * 0.1
-            let center: CGPoint = CGPoint(x: geometry.size.width / 2.0, y: geometry.size.height / 2.0)
-            let radius = (minLength - strokeLineWidth) / 2.0
-            let startAngle: Angle = .degrees(135)
-            let endAngle: Angle = .degrees(405)
-            ZStack {
-                Path { path in
-                    path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-                }
-                .stroke(AngularGradient(
-                            gradient: Gradient(colors: colors),
-                            center: .center,
-                            startAngle: .degrees(135),
-                            endAngle: .degrees(405)), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
-                VStack {
-                    Spacer()
-                    Circle().stroke(Color.black, lineWidth: strokeLineWidth / 5.0)
-                        .frame(width: strokeLineWidth, height: strokeLineWidth, alignment: .center)
-                }
-                .rotationEffect(.degrees(45) + (endAngle - startAngle) * percent )
-            }
-        }
+        CircularOpenGradientGaugeView(percent, colors: colors, startAngle: .degrees(150), endAngle: .degrees(390))
     }
 }
 
-struct CircularOpenGradientGaugeImageTextView<Content>: View where Content: View {
-    let colors: [Color]
-    let percent: Double
-    let centerTextPrivider: Text
-    let bottomImagePrivider: (_ value: Double) -> Content
-    
-    init(_ percent: Double,
-         colors: [Color],
-         centerTextPrivider: Text,
-         @ViewBuilder bottomImagePrivider: @escaping (_ value: Double) -> Content) {
-        self.percent = percent
-        self.colors = colors
-        self.centerTextPrivider = centerTextPrivider
-        self.bottomImagePrivider = bottomImagePrivider
+struct CircularClosedGaugeTextView<G: GaugeProvider>: View {
+    let gaugeProvider: G
+    let centerTextProvider: Text
+
+    init(gaugeProvider: G,
+         centerTextProvider: Text
+         ) {
+        self.gaugeProvider = gaugeProvider
+        self.centerTextProvider = centerTextProvider
     }
     
     var body: some View {
         GeometryReader { geometry in
             let minLength = min(geometry.size.width, geometry.size.height)
             ZStack {
-                CircularOpenGradientGaugeView(percent, colors: colors)
-                VStack {
-                    centerTextPrivider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1).frame(width: minLength * 0.8)
+                gaugeProvider
+                centerTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1).frame(width: minLength * 0.8)
+            }
+        }
+    }
+}
+struct CircularOpenGaugeSimpleTextView<G: GaugeProvider>: View {
+    let gaugeProvider: G
+    let centerTextProvider: Text
+    let bottomTextProvider: Text
+    
+    init(gaugeProvider: G,
+         centerTextProvider: Text,
+         bottomTextProvider: Text) {
+        self.gaugeProvider = gaugeProvider
+        self.centerTextProvider = centerTextProvider
+        self.bottomTextProvider = bottomTextProvider
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            ZStack {
+                gaugeProvider
+                ZStack {
+                    centerTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1)
+                    VStack {
+                        Spacer()
+                        bottomTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1)
+                    }
                 }
+                .frame(width: minLength * 0.6, height: minLength)
+            }
+        }
+    }
+}
+
+struct CircularOpenGaugeRangeTextView<G: GaugeProvider>: View {
+    let gaugeProvider: G
+    let leadingTextProvider: Text
+    let centerTextProvider: Text
+    let trailingProvider: Text
+    
+    init(gaugeProvider: G,
+         leadingTextProvider: Text,
+         centerTextProvider: Text,
+         trailingTextProvider: Text) {
+        self.gaugeProvider = gaugeProvider
+        self.leadingTextProvider = leadingTextProvider
+        self.centerTextProvider = centerTextProvider
+        self.trailingProvider = trailingTextProvider
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            ZStack {
+                gaugeProvider
+                ZStack {
+                    VStack {
+                        Spacer()
+                        HStack{
+                            leadingTextProvider.font(.system(size: minLength / 6)).minimumScaleFactor(0.1).lineLimit(1)
+                            Spacer()
+                            trailingProvider.font(.system(size: minLength / 6)).minimumScaleFactor(0.1).lineLimit(1)
+                        }
+                    }
+                    centerTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1)
+                }
+                .frame(width: minLength * 0.7, height: minLength)
+            }
+        }
+    }
+}
+
+struct CircularOpenGaugeImageTextView<Content: View, G: GaugeProvider>: View {
+    let gaugeProvider: G
+    let centerTextProvider: Text
+    let bottomImageProvider: () -> Content
+
+    init(gaugeProvider: G,
+         centerTextProvider: Text,
+         @ViewBuilder bottomImageProvider: @escaping () -> Content
+         ) {
+        self.gaugeProvider = gaugeProvider
+        self.centerTextProvider = centerTextProvider
+        self.bottomImageProvider = bottomImageProvider
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            ZStack {
+                gaugeProvider
+                centerTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1).frame(width: minLength * 0.8)
                 VStack {
                     Spacer()
-                    bottomImagePrivider(percent)
+                    bottomImageProvider()
                         .frame(width: minLength / 5.0, height: minLength / 5.0)
                 }
             }
@@ -262,23 +269,24 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
             let percent = 0.5
             Color.white.ignoresSafeArea()
             VStack {
-                CircularClosedGaugeView(percent)
-                CircularClosedGaugeTextView(percent, centerTextPrivider: Text("\(Int(percent * 100))%"))
-                CircularOpenGaugeView(percent)
-                CircularOpenGaugeImageTextView(percent, centerTextPrivider: Text("\(Int(percent * 100))%")) {_ in
-                    Image(systemName: "heart.fill").resizable().foregroundColor(.blue)
-                }
-                CircularOpenGaugeRangeView(percent)
-                CircularOpenGaugeRangeTextView(percent,
-                                               leadingTextPrivider: Text("24"),
-                                               centerTextPrivider: Text("28°C"),
-                                               trailingTextPrivider: Text("31"))
-//                    .frame(width: 50, height: 50, alignment: .center)
-                CircularOpenGradientGaugeView(percent)
-                CircularOpenGradientGaugeImageTextView(percent, colors: [.green, .blue, .purple, .red],
-                                                   centerTextPrivider: Text("\(String(format: "%.2f", percent))")) {_ in
-                    Image(systemName: "heart.fill").resizable().foregroundColor(.blue)
-                }
+                CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent), centerTextProvider: Text("\(Int(percent * 100))%"))
+                CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGaugeView(percent),
+                                                centerTextProvider: Text("345555"),
+                                                bottomTextProvider: Text("AQI"))
+                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGaugeRangeView(percent),
+                                               leadingTextProvider: Text("24"),
+                                               centerTextProvider: Text("28°C"),
+                                               trailingTextProvider: Text("31"))
+                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent),
+                                               leadingTextProvider: Text("24"),
+                                               centerTextProvider: Text("28°C"),
+                                               trailingTextProvider: Text("31"))
+                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
+                                               centerTextProvider: Text("\(Int(percent * 100))%"),
+                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.blue) })
+                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent),
+                                               centerTextProvider: Text("\(String(format: "%.2f", percent))"),
+                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.blue) })
             }
         }
     }

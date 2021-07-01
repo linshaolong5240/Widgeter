@@ -64,9 +64,6 @@ struct WatchFaceWidgetView: View {
                             Image(systemName: "sun.max")
                                 .foregroundColor(.orange)
                         }
-                        //                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .topLeading, text: Text("63%"))
-                        //                ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .topTrailling, text: Text("63%"))
-                        
                         ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .bottomLeading, text: Text("63%"))
                         ClockTemplateCornerGaugeTextView(percent: 0.25, color: .green, position: .bottomTrailing, text: Text("63%"))
                     }
