@@ -224,6 +224,7 @@ struct CircularOpenGaugeRangeTextView<G: GaugeProvider>: View {
                             Spacer()
                             trailingProvider.font(.system(size: minLength / 6)).minimumScaleFactor(0.1).lineLimit(1)
                         }
+                        .padding([.horizontal, .bottom], minLength / 10.0)
                     }
                     centerTextProvider.font(.system(size: minLength / 4)).minimumScaleFactor(0.1).lineLimit(1)
                 }
@@ -336,21 +337,26 @@ struct ClockFuncView: View {
                 ZStack {
                     VStack {
                         top
+                            .background(Circle().fill(Color.black))
                         Spacer()
                             .frame(height: minLength / 3.0)
                         bottom
+                            .background(Circle().fill(Color.black))
                     }
                     HStack {
                         left
+                            .background(Circle().fill(Color.black))
                         Spacer()
                             .frame(width: minLength / 3.0)
                         right
+                            .background(Circle().fill(Color.black))
                     }
                 }
                 .frame(width: minLength, height: minLength, alignment: .center)
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
         }
+        .environment(\.colorScheme, .dark)
 //        .background(Color.pink)
     }
 }
