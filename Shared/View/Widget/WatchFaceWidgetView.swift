@@ -52,10 +52,10 @@ struct WatchFaceWidgetView: View {
                         ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .bottomLeading, text: Text("63%"))
                         ClockTemplateCornerGaugeTextView(percent: 0.25, color: .green, position: .bottomTrailing, text: Text("63%"))
                     }
-                    ClockFuncView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent),
+                    ClockFuncView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent, color: .green),
                                                                               centerTextProvider: Text("\(Int(percent * 100))%"))),
                                   bottom: AnyView(CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
-                                                                                                                                    colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+                                                                                                                               colors: [.green, .yellow, .orange, .pink, .purple]),
                                                                                  centerTextProvider: Text("345555"),
                                                                                  bottomTextProvider: Text("AQI"))),
                                   left: AnyView(CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
@@ -63,7 +63,7 @@ struct WatchFaceWidgetView: View {
                                                                                leadingTextProvider: Text("24"),
                                                                                centerTextProvider: Text("28°C"),
                                                                                trailingTextProvider: Text("31"))),
-                                  right: AnyView(CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
+                                  right: AnyView(CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent, color:  .pink),
                                                                                 centerTextProvider: Text("\(String(format: "%.2f", percent))"),
                                                                                 bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })))
                         .frame(width: minLength * 0.6, height: minLength * 0.6, alignment: .center)
