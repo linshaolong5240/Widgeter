@@ -56,7 +56,7 @@ struct WatchFaceWidgetView: View {
                                                                               centerTextProvider: Text("\(Int(percent * 100))%"))),
                                   bottom: AnyView(CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
                                                                                                                                colors: [.green, .yellow, .orange, .pink, .purple]),
-                                                                                 centerTextProvider: Text("345555"),
+                                                                                 centerTextProvider: Text("345"),
                                                                                  bottomTextProvider: Text("AQI"))),
                                   left: AnyView(CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
                                                                                                                                  colors: [.blue, .green, .yellow, .orange, .pink, .red]),
@@ -64,24 +64,24 @@ struct WatchFaceWidgetView: View {
                                                                                centerTextProvider: Text("28°C"),
                                                                                trailingTextProvider: Text("31"))),
                                   right: AnyView(CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent, color:  .pink),
-                                                                                centerTextProvider: Text("\(String(format: "%.2f", percent))"),
+                                                                                centerTextProvider: Text("72"),
                                                                                 bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })))
                         .frame(width: minLength * 0.6, height: minLength * 0.6, alignment: .center)
                     Group {
                         ClockNeedleView(Date(), for: .hour) {
                             Rectangle()
                                 .fill(Color.blue)
-                                .frame(width: 5, height: 40, alignment: .center)
+                                .frame(width: 5, height: minLength * 0.2, alignment: .center)
                         }
                         ClockNeedleView(Date(), for: .minute) {
                             Rectangle()
                                 .fill(Color.green)
-                                .frame(width: 3, height: 50, alignment: .center)
+                                .frame(width: 3, height: minLength * 0.3, alignment: .center)
                         }
                         ClockNeedleView(Date(), for: .second) {
                             Rectangle()
                                 .fill(Color.pink)
-                                .frame(width: 3, height: 60, alignment: .center)
+                                .frame(width: 3, height: minLength * 0.35, alignment: .center)
                         }
                         Circle()
                             .frame(width: 5, height: 5, alignment: .center)
