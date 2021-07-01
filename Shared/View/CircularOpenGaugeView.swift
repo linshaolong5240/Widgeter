@@ -122,6 +122,7 @@ struct CircularOpenGradientGaugeView: GaugeProvider {
                     Circle().stroke(Color.black, lineWidth: strokeLineWidth / 5.0)
                         .frame(width: strokeLineWidth, height: strokeLineWidth, alignment: .center)
                 }
+                .frame(width: minLength, height: minLength, alignment: .center)
                 .rotationEffect((startAngle - .degrees(90)) + (endAngle - startAngle) * percent )
             }
         }
@@ -257,6 +258,7 @@ struct CircularOpenGaugeImageTextView<Content: View, G: GaugeProvider>: View {
                     bottomImageProvider()
                         .frame(width: minLength / 5.0, height: minLength / 5.0)
                 }
+                .frame(width: minLength, height: minLength)
             }
         }
     }
@@ -277,17 +279,20 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
                                                leadingTextProvider: Text("24"),
                                                centerTextProvider: Text("28°C"),
                                                trailingTextProvider: Text("31"))
-                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent),
+                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
+                                                                                                 colors: [.blue, .green, .yellow, .orange, .pink, .red]),
                                                leadingTextProvider: Text("24"),
                                                centerTextProvider: Text("28°C"),
                                                trailingTextProvider: Text("31"))
                 CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
                                                centerTextProvider: Text("\(Int(percent * 100))%"),
-                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.blue) })
-                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent),
+                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
+                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
+                                                                                            colors: [.blue, .green, .yellow, .orange, .pink, .red]),
                                                centerTextProvider: Text("\(String(format: "%.2f", percent))"),
-                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.blue) })
+                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
             }
+            .frame(width: 50)
         }
     }
 }
