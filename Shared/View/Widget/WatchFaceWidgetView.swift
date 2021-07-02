@@ -54,20 +54,21 @@ struct WatchFaceWidgetView: View {
                                                               trailingTextProvider: Text("100"), textProvider: Text("50%"))
                     }
                     .frame(width: minLength * 0.85, height: minLength * 0.85, alignment: .center)
-                    ClockFuncView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent, color: .green),
+                    ClockFunctionView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent, color: .green),
                                                                               centerTextProvider: Text("\(Int(percent * 100))%"))),
-                                  bottom: AnyView(CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
-                                                                                                                               colors: [.green, .yellow, .orange, .pink, .purple]),
+                                  bottom: AnyView(CircularOpenGaugeSimpleTextView(percent,
+                                                                                  colors: [.green, .yellow, .orange, .pink, .purple],
                                                                                  centerTextProvider: Text("345"),
                                                                                  bottomTextProvider: Text("AQI"))),
-                                  left: AnyView(CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
-                                                                                                                                 colors: [.blue, .green, .yellow, .orange, .pink, .red]),
+                                  left: AnyView(CircularOpenGaugeRangeTextView(percent,
+                                                                               colors: [.blue, .green, .yellow, .orange, .pink, .red],
                                                                                leadingTextProvider: Text("24"),
                                                                                centerTextProvider: Text("28°C"),
                                                                                trailingTextProvider: Text("31"))),
-                                  right: AnyView(CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent, color:  .pink),
-                                                                                centerTextProvider: Text("72"),
-                                                                                bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })))
+                                  right: AnyView(CircularOpenGaugeImageView(percent,
+                                                                            colors:  [.pink],
+                                                                            centerTextProvider: Text("72"),
+                                                                            bottomImageProvider: Image(systemName: "heart.fill"))))
                         .frame(width: minLength * 0.6, height: minLength * 0.6, alignment: .center)
                     Group {
                         ClockNeedleView(Date(), for: .hour) {
