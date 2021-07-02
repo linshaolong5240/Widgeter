@@ -81,19 +81,19 @@ struct WatchFaceWidgetView: View {
                         .frame(width: minLength * 0.6, height: minLength * 0.6, alignment: .center)
                     Group {
                         ClockNeedleView(Date(), for: .hour) {
-                            Rectangle()
+                            Capsule()
                                 .fill(Color.blue)
                                 .frame(width: 5, height: minLength * 0.2, alignment: .center)
                         }
                         ClockNeedleView(Date(), for: .minute) {
-                            Rectangle()
+                            Capsule()
                                 .fill(Color.green)
-                                .frame(width: 3, height: minLength * 0.3, alignment: .center)
+                                .frame(width: 3, height: minLength * 0.25, alignment: .center)
                         }
                         ClockNeedleView(Date(), for: .second) {
-                            Rectangle()
+                            Capsule()
                                 .fill(Color.pink)
-                                .frame(width: 3, height: minLength * 0.35, alignment: .center)
+                                .frame(width: 3, height: minLength * 0.3, alignment: .center)
                         }
                         Circle()
                             .frame(width: 5, height: 5, alignment: .center)
