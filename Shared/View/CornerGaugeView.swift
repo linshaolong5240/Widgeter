@@ -92,6 +92,8 @@ extension Corner {
 }
 
 struct ClockCornerGaugeView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     let percent: Double
     let colors: [Color]
     let position: Corner
@@ -131,7 +133,7 @@ struct ClockCornerGaugeView: View {
                                 endAngle: position.endAngle), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
                     VStack {
                         Spacer()
-                        Circle().stroke(Color.black, lineWidth: strokeLineWidth / 5.0)
+                        Circle().stroke(colorScheme == .light ? Color.white : Color.black, lineWidth: strokeLineWidth / 5.0)
                             .frame(width: strokeLineWidth, height: strokeLineWidth, alignment: .center)
                     }
                     .frame(width: minLength, height: minLength, alignment: .center)

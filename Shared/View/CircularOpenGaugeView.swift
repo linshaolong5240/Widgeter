@@ -74,6 +74,8 @@ struct CircularClosedGaugeView: CircularGaugeProvider {
 }
 
 struct CircularOpenGaugeView: CircularGaugeProvider {
+    @Environment(\.colorScheme) private var colorScheme
+    
     let percent: Double
     let colors: [Color]
     let startAngle: Angle
@@ -116,7 +118,7 @@ struct CircularOpenGaugeView: CircularGaugeProvider {
                                 endAngle: endAngle), style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
                     VStack {
                         Spacer()
-                        Circle().stroke(Color.black, lineWidth: strokeLineWidth / 5.0)
+                        Circle().stroke(colorScheme == .light ? Color.white : Color.black, lineWidth: strokeLineWidth / 5.0)
                             .frame(width: strokeLineWidth, height: strokeLineWidth, alignment: .center)
                     }
                     .frame(width: minLength, height: minLength, alignment: .center)
@@ -292,31 +294,6 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             let percent = 0.5
-            Color.white.ignoresSafeArea()
-//            VStack {
-//                CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent), centerTextProvider: Text("\(Int(percent * 100))%"))
-//                CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGaugeView(percent),
-//                                                centerTextProvider: Text("345555"),
-//                                                bottomTextProvider: Text("AQI"))
-//                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGaugeRangeView(percent),
-//                                               leadingTextProvider: Text("24"),
-//                                               centerTextProvider: Text("28°C"),
-//                                               trailingTextProvider: Text("31"))
-//                CircularOpenGaugeRangeTextView(gaugeProvider: CircularOpenGradientGaugeRangeView(percent,
-//                                                                                                 colors: [.blue, .green, .yellow, .orange, .pink, .red]),
-//                                               leadingTextProvider: Text("24"),
-//                                               centerTextProvider: Text("28°C"),
-//                                               trailingTextProvider: Text("31"))
-//                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGaugeView(percent),
-//                                               centerTextProvider: Text("\(Int(percent * 100))%"),
-//                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
-//                CircularOpenGaugeImageTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,
-//                                                                                            colors: [.blue, .green, .yellow, .orange, .pink, .red]),
-//                                               centerTextProvider: Text("\(String(format: "%.2f", percent))"),
-//                                               bottomImageProvider: { Image(systemName: "heart.fill").resizable().foregroundColor(.pink) })
-//            }
-//            .frame(width: 50)
-            
             ClockFunctionView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent),
                                                                    centerTextProvider: Text("\(Image(systemName: "battery.100.bolt"))\(Int(percent * 100))%"))),
                           bottom: AnyView(CircularOpenGaugeSimpleTextView(0.05,
@@ -331,7 +308,6 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
                           right: AnyView(CircularOpenGaugeImageView(0.3, colors: [.pink],
                                                                         centerTextProvider: Text("75"),
                                                                         bottomImageProvider: Image(systemName: "heart.fill"))))
-                .environment(\.colorScheme, .light)
 //                .frame(width: 100, height: 100, alignment: .center)
         }
     }
