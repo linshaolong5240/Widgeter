@@ -9,6 +9,41 @@ import SwiftUI
 
 protocol CircularGaugeProvider: View { }
 
+extension Array where Element == Color {
+    func intermediate(percent: CGFloat) -> Color? {
+        guard count > 0 else {
+            return nil
+        }
+        guard count != 1 else {
+            return first
+        }
+        switch percent {
+        case 0: return first
+        case 1: return last
+        default:
+            let approxIndex = percent / (1 / CGFloat(count - 1))
+            let firstIndex = Int(approxIndex.rounded(.down))
+            let secondIndex = Int(approxIndex.rounded(.up))
+            let fallbackIndex = Int(approxIndex.rounded())
+
+            let firstColor = UIColor(self[firstIndex])
+            let secondColor = UIColor(self[secondIndex])
+            let fallbackColor = UIColor(self[fallbackIndex])
+
+            var (r1, g1, b1, a1): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
+            var (r2, g2, b2, a2): (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
+            guard firstColor.getRed(&r1, green: &g1, blue: &b1, alpha: &a1) else { return Color(fallbackColor) }
+            guard secondColor.getRed(&r2, green: &g2, blue: &b2, alpha: &a2) else { return Color(fallbackColor) }
+
+            let intermediatePercentage = approxIndex - CGFloat(firstIndex)
+            return Color(UIColor(red: CGFloat(r1 + (r2 - r1) * intermediatePercentage),
+                                 green: CGFloat(g1 + (g2 - g1) * intermediatePercentage),
+                                 blue: CGFloat(b1 + (b2 - b1) * intermediatePercentage),
+                                 alpha: CGFloat(a1 + (a2 - a1) * intermediatePercentage)))
+        }
+    }
+}
+
 struct CircularClosedGaugeView: CircularGaugeProvider {
     let percent: Double
     let color: Color
@@ -156,7 +191,7 @@ struct CircularOpenGaugeSimpleTextView: View {
                             .lineLimit(1)
                             .font(.system(size: minLength / 4))
                             .minimumScaleFactor(0.1)
-                            .foregroundColor(colors[Int(Double(colors.count - 1) * percent)])
+                            .foregroundColor(colors.intermediate(percent: CGFloat(percent)))
                     }
                 }
                 .frame(width: minLength * 0.6, height: minLength)
@@ -243,7 +278,7 @@ struct CircularOpenGaugeImageView: View {
                     Spacer()
                     bottomImageProvider
                         .resizable()
-                        .foregroundColor(colors[Int(Double(colors.count - 1) * percent)])
+                        .foregroundColor(colors.intermediate(percent: CGFloat(percent)))
                         .frame(width: minLength / 5.0, height: minLength / 5.0)
                 }
                 .frame(width: minLength, height: minLength)
@@ -284,7 +319,7 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
             
             ClockFunctionView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent),
                                                                    centerTextProvider: Text("\(Image(systemName: "battery.100.bolt"))\(Int(percent * 100))%"))),
-                          bottom: AnyView(CircularOpenGaugeSimpleTextView(0.25,
+                          bottom: AnyView(CircularOpenGaugeSimpleTextView(0.05,
                                                                           colors: [.blue, .green, .yellow, .orange, .pink, .red],
                                                                           centerTextProvider: Text("345555"),
                                                                           bottomTextProvider: Text("AQI"))),
@@ -293,8 +328,8 @@ struct CircularOpenGaugeView_Previews: PreviewProvider {
                                                                        leadingTextProvider: Text("24"),
                                                                        centerTextProvider: Text("28°C"),
                                                                        trailingTextProvider: Text("31"))),
-                          right: AnyView(CircularOpenGaugeImageView(percent, colors: [.pink],
-                                                                        centerTextProvider: Text("\(String(format: "%.2f", percent))"),
+                          right: AnyView(CircularOpenGaugeImageView(0.3, colors: [.pink],
+                                                                        centerTextProvider: Text("75"),
                                                                         bottomImageProvider: Image(systemName: "heart.fill"))))
                 .environment(\.colorScheme, .light)
 //                .frame(width: 100, height: 100, alignment: .center)
