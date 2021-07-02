@@ -216,6 +216,7 @@ struct CornerGaugeImageView<Content: View>: View {
                 ZStack(alignment: position.cornerAlignment) {
                     Color.clear
                     imageProvider()
+                        .foregroundColor(colors.intermediate(percent: CGFloat(percent)))
                         .padding(minLength / 50)
                         .frame(width: minLength / 8, height: minLength / 8)
                 }
@@ -229,21 +230,15 @@ struct CornerGaugeSimpleTextView: View {
     let percent: Double
     let colors: [Color]
     let position: Corner
-    let leadingTextProvider: Text
-    let trailingTextProvider: Text
     let textProvider: Text
 
     init(_ percent: Double,
          colors: [Color],
          position: Corner,
-         leadingTextProvider: Text,
-         trailingTextProvider: Text,
          textProvider: Text) {
         self.percent = percent
         self.colors = colors
         self.position = position
-        self.leadingTextProvider = leadingTextProvider
-        self.trailingTextProvider = trailingTextProvider
         self.textProvider = textProvider
     }
     
@@ -277,10 +272,9 @@ struct CornerGaugeView_Previews: PreviewProvider {
                                  trailingTextProvider: Text("100")) {
                 Image(systemName: "heart.fill").resizable().foregroundColor(.pink) }
             CornerGaugeSimpleTextView(0.5,
-                                                  colors: [.green, .pink],
-                                                  position: .bottomTrailing,
-                                                  leadingTextProvider: Text("0"),
-                                                  trailingTextProvider: Text("100"), textProvider: Text("50%"))
+                                      colors: [.green, .orange, .pink],
+                                      position: .bottomTrailing,
+                                      textProvider: Text("50%"))
             
         }
     }

@@ -41,17 +41,26 @@ struct WatchFaceWidgetView: View {
                     }
                     .frame(width: minLength * 0.7)
                     Group {
+                        CornerGaugeSimpleTextView(0.5,
+                                                  colors: [.green],
+                                                  position: .topLeading,
+                                                  textProvider: Text("50%"))
                         CornerGaugeImageView(0.5,
-                                                               colors: [.pink],
-                                                               position: .topTrailing,
-                                                               leadingTextProvider: Text("0"),
-                                                               trailingTextProvider: Text("100")) {
+                                             colors: [.pink],
+                                             position: .topTrailing,
+                                             leadingTextProvider: Text("0"),
+                                             trailingTextProvider: Text("100")) {
                             Image(systemName: "heart.fill").resizable().foregroundColor(.pink) }
                         CornerGaugeSimpleTextView(0.5,
-                                                              colors: [.green, .orange, .pink],
-                                                              position: .bottomTrailing,
-                                                              leadingTextProvider: Text("0"),
-                                                              trailingTextProvider: Text("100"), textProvider: Text("50%"))
+                                                  colors: [.green, .orange, .pink],
+                                                  position: .bottomTrailing,
+                                                  textProvider: Text("50%"))
+                        CornerGaugeImageView(0.8,
+                                             colors: [.blue, .purple],
+                                             position: .bottomLeading,
+                                             leadingTextProvider: Text("0"),
+                                             trailingTextProvider: Text("100")) {
+                            Image(systemName: "speaker.wave.2").resizable()}
                     }
                     .frame(width: minLength * 0.85, height: minLength * 0.85, alignment: .center)
                     ClockFunctionView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent, color: .green),
@@ -106,5 +115,6 @@ struct WatchFaceWidgetView_Previews: PreviewProvider {
             WatchFaceWidgetView()
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
+        .environment(\.colorScheme, .dark)
     }
 }

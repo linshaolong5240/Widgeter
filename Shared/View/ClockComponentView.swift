@@ -129,6 +129,52 @@ struct ClockNeedleView<NeedleView: View>: View {
     }
 }
 
+struct ClockFunctionView: View {
+    let top: AnyView
+    let bottom: AnyView
+    let left: AnyView
+    let right: AnyView
+    
+    init(top: AnyView,
+         bottom: AnyView,
+         left: AnyView,
+         right: AnyView) {
+        self.top = top
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+    }
+
+    var body: some View {
+        GeometryReader { geometry in
+            let minLength = min(geometry.size.width, geometry.size.height)
+            ZStack {
+                ZStack {
+                    VStack {
+                        top
+                            .background(Circle().fill(Color.black))
+                        Spacer()
+                            .frame(height: minLength / 3.0)
+                        bottom
+                            .background(Circle().fill(Color.black))
+                    }
+                    HStack {
+                        left
+                            .background(Circle().fill(Color.black))
+                        Spacer()
+                            .frame(width: minLength / 3.0)
+                        right
+                            .background(Circle().fill(Color.black))
+                    }
+                }
+                .frame(width: minLength, height: minLength, alignment: .center)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+        }
+        .environment(\.colorScheme, .dark)
+    }
+}
+
 #if DEBUG
 struct ClockComponentView_Previews: PreviewProvider {
     static var previews: some View {
