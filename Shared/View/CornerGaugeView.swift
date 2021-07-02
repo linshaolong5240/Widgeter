@@ -253,6 +253,8 @@ struct CornerGaugeSimpleTextView: View {
                     Color.clear
                     textProvider
                         .font(.system(size: minLength / 16))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.1)
                         .frame(width: minLength / 7, height: minLength / 7)
                         .rotationEffect(position.cornerTextAngle)
                 }
