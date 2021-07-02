@@ -9,24 +9,25 @@ import SwiftUI
 import WidgetKit
 
 struct WatchFaceWidgetView: View {
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         GeometryReader { geometry in
             let percent = 0.5
             let minLength = min(geometry.size.width, geometry.size.height)
             ZStack {
-                Color.black
+                colorScheme == .light ? Color.white : Color.black
                 ZStack {
                     Group {
-                        Circle().fill(Color.white)
+                        Circle().fill(colorScheme == .light ? Color.black : Color.white)
                         ClockMarkView(60) { index in
                             Rectangle()
-                                .fill(Color.secondary)
+                                .fill(colorScheme == .light ? Color.gray : Color.black)
                                 .frame(width: minLength * 0.008, height: minLength * 0.03, alignment: .center)
                         }
                         ClockMarkView(12) { index in
                             Rectangle()
-                                .fill(Color.black)
+                                .fill(colorScheme == .light ? Color.white : Color.black)
                                 .frame(width: minLength * 0.01, height: minLength * 0.04, alignment: .center)
                         }
 //                        ClockMarkView(12, origin: true) { index in
@@ -38,20 +39,21 @@ struct WatchFaceWidgetView: View {
 //                                .padding(.all, 5)
 //                        }
                     }
-                    .frame(width: minLength * 0.8)
+                    .frame(width: minLength * 0.7)
                     Group {
-                        ClockTemplateCornerGaugeImageView(percent: 0.5, color: .blue, position: .topLeading, leadingText: Text("0"), trailingText: Text("100")) { value in
-                            Image(systemName: "speaker.wave.2")
-                                .resizable()
-                                .foregroundColor(.blue)
-                        }
-                        ClockTemplateCornerGaugeImageView(percent: 0.7, color: .orange, position: .topTrailing, leadingText: Text("0"), trailingText: Text("100")) { value in
-                            Image(systemName: "sun.max")
-                                .foregroundColor(.orange)
-                        }
-                        ClockTemplateCornerGaugeTextView(percent: 0.25, color: .yellow, position: .bottomLeading, text: Text("63%"))
-                        ClockTemplateCornerGaugeTextView(percent: 0.25, color: .green, position: .bottomTrailing, text: Text("63%"))
+                        CornerGaugeImageView(0.5,
+                                                               colors: [.pink],
+                                                               position: .topTrailing,
+                                                               leadingTextProvider: Text("0"),
+                                                               trailingTextProvider: Text("100")) {
+                            Image(systemName: "heart.fill").resizable().foregroundColor(.pink) }
+                        CornerGaugeSimpleTextView(0.5,
+                                                              colors: [.green, .orange, .pink],
+                                                              position: .bottomTrailing,
+                                                              leadingTextProvider: Text("0"),
+                                                              trailingTextProvider: Text("100"), textProvider: Text("50%"))
                     }
+                    .frame(width: minLength * 0.85, height: minLength * 0.85, alignment: .center)
                     ClockFuncView(top: AnyView(CircularClosedGaugeTextView(gaugeProvider: CircularClosedGaugeView(percent, color: .green),
                                                                               centerTextProvider: Text("\(Int(percent * 100))%"))),
                                   bottom: AnyView(CircularOpenGaugeSimpleTextView(gaugeProvider: CircularOpenGradientGaugeView(percent,

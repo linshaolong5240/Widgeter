@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-protocol GaugeProvider: View { }
+protocol CircularGaugeProvider: View { }
 
-struct CircularClosedGaugeView: GaugeProvider {
+struct CircularClosedGaugeView: CircularGaugeProvider {
     let percent: Double
     let color: Color
 
@@ -38,7 +38,7 @@ struct CircularClosedGaugeView: GaugeProvider {
     }
 }
 
-struct CircularOpenGaugeView: GaugeProvider {
+struct CircularOpenGaugeView: CircularGaugeProvider {
     let percent: Double
     let color: Color
     let startAngle: Angle
@@ -72,7 +72,7 @@ struct CircularOpenGaugeView: GaugeProvider {
     }
 }
 
-struct CircularOpenGaugeRangeView: GaugeProvider {
+struct CircularOpenGaugeRangeView: CircularGaugeProvider {
     let percent: Double
     let color: Color
 
@@ -86,7 +86,7 @@ struct CircularOpenGaugeRangeView: GaugeProvider {
     }
 }
 
-struct CircularOpenGradientGaugeView: GaugeProvider {
+struct CircularOpenGradientGaugeView: CircularGaugeProvider {
     let percent: Double
     let colors: [Color]
     let startAngle: Angle
@@ -129,7 +129,7 @@ struct CircularOpenGradientGaugeView: GaugeProvider {
     }
 }
 
-struct CircularOpenGradientGaugeRangeView: GaugeProvider {
+struct CircularOpenGradientGaugeRangeView: CircularGaugeProvider {
     let percent: Double
     let colors: [Color]
 
@@ -143,7 +143,7 @@ struct CircularOpenGradientGaugeRangeView: GaugeProvider {
     }
 }
 
-struct CircularClosedGaugeTextView<G: GaugeProvider>: View {
+struct CircularClosedGaugeTextView<G: CircularGaugeProvider>: View {
     let gaugeProvider: G
     let centerTextProvider: Text
 
@@ -164,7 +164,7 @@ struct CircularClosedGaugeTextView<G: GaugeProvider>: View {
         }
     }
 }
-struct CircularOpenGaugeSimpleTextView<G: GaugeProvider>: View {
+struct CircularOpenGaugeSimpleTextView<G: CircularGaugeProvider>: View {
     let gaugeProvider: G
     let centerTextProvider: Text
     let bottomTextProvider: Text
@@ -195,7 +195,7 @@ struct CircularOpenGaugeSimpleTextView<G: GaugeProvider>: View {
     }
 }
 
-struct CircularOpenGaugeRangeTextView<G: GaugeProvider>: View {
+struct CircularOpenGaugeRangeTextView<G: CircularGaugeProvider>: View {
     let gaugeProvider: G
     let leadingTextProvider: Text
     let centerTextProvider: Text
@@ -234,7 +234,7 @@ struct CircularOpenGaugeRangeTextView<G: GaugeProvider>: View {
     }
 }
 
-struct CircularOpenGaugeImageTextView<Content: View, G: GaugeProvider>: View {
+struct CircularOpenGaugeImageTextView<Content: View, G: CircularGaugeProvider>: View {
     let gaugeProvider: G
     let centerTextProvider: Text
     let bottomImageProvider: () -> Content
