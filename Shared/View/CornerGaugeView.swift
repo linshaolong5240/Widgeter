@@ -75,7 +75,7 @@ extension Corner {
         switch  self {
         case .topLeading:       return [.top, .leading]
         case .topTrailing:         return [.top, .trailing]
-        case .bottomLeading:    return [.bottom, .leading]
+        case .bottomLeading:    return [.bottom, .leading, .trailing]
         case .bottomTrailing:      return [.bottom, .trailing]
         }
     }

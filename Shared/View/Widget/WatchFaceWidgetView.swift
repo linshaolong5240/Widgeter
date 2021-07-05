@@ -45,12 +45,7 @@ struct WatchFaceWidgetView: View {
                                                   colors: [.green],
                                                   position: .topLeading,
                                                   textProvider: Text("50%"))
-                        CornerGaugeImageView(0.5,
-                                             colors: [.pink],
-                                             position: .topTrailing,
-                                             leadingTextProvider: Text("0"),
-                                             trailingTextProvider: Text("100")) {
-                            Image(systemName: "heart.fill").resizable().foregroundColor(.pink) }
+                        CornerCalendarView(Date(), position: .topTrailing)
                         CornerGaugeSimpleTextView(0.5,
                                                   colors: [.green, .orange, .pink],
                                                   position: .bottomTrailing,
