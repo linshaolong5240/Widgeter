@@ -2,7 +2,7 @@
 //  DititalClockView.swift
 //  Widgeter
 //
-//  Created by qfdev on 2021/6/10.
+//  Created by 林少龙 on 2021/6/10.
 //
 
 import SwiftUI
