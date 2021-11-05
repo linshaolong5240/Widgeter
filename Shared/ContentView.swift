@@ -26,6 +26,11 @@ struct ContentView: View {
                 DititalClockView(Date())
             }
         }.padding(.horizontal)
+//        VStack {
+//            let url = URL(string: "sinaweibo://")!
+//            let a = UIApplication.shared.canOpenURL(url)
+//            Text("\(a == true ? "True" : "False")")
+//        }
     }
 }
 

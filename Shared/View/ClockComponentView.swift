@@ -186,6 +186,7 @@ struct ClockComponentView_Previews: PreviewProvider {
             WatchFaceWidgetView()
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
+        .preferredColorScheme(.dark)
     }
 }
 #endif
