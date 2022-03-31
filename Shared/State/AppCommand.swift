@@ -85,11 +85,9 @@ struct HealthQueryCommand: AppCommand {
         let descriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
         let limit  = 0
         let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: limit, sortDescriptors: [descriptor]) { query, samples, error in
-            if let watchSamples = samples?.compactMap({ $0 as? HKQuantitySample }).filter({$0.device?.model == HKDeviceModel.Watch.rawValue}) {
-                completion(watchSamples)
-            } else  if let phoneSamples = samples?.compactMap({ $0 as? HKQuantitySample }).filter({$0.device?.model == HKDeviceModel.iPhone.rawValue}) {
-                completion(phoneSamples)
-            }
+            let watchSamples: [HKQuantitySample] = samples?.compactMap({ $0 as? HKQuantitySample }).filter({$0.device?.model == HKDeviceModel.Watch.rawValue}) ?? []
+            let phoneSamples: [HKQuantitySample] = samples?.compactMap({ $0 as? HKQuantitySample }).filter({$0.device?.model == HKDeviceModel.iPhone.rawValue}) ?? []
+            completion(watchSamples.count > phoneSamples.count ? watchSamples : phoneSamples)
         }
         store.execute(sampleQuery)
     }
