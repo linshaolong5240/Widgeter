@@ -34,14 +34,14 @@
 		EF157B4A2689D8F000CCCE87 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B492689D8F000CCCE87 /* SwiftUIView.swift */; };
 		EF157B4B2689D8F000CCCE87 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B492689D8F000CCCE87 /* SwiftUIView.swift */; };
 		EF157B4C2689D8F000CCCE87 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF157B492689D8F000CCCE87 /* SwiftUIView.swift */; };
+		EF51765D286559EF00E33F48 /* WatchFaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB98931268B38C200A42905 /* WatchFaceWidgetView.swift */; };
+		EF51765E286559EF00E33F48 /* WatchFaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB98931268B38C200A42905 /* WatchFaceWidgetView.swift */; };
 		EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C07502671F07A00AA2A69 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C074D2671F07A00AA2A69 /* CalendarView.swift */; };
 		EF7C07552671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
 		EF7C07562671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
 		EF7C07572671F6BC00AA2A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF7C07592671F6BC00AA2A69 /* Localizable.strings */; };
-		EFB98932268B38C200A42905 /* WatchFaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB98931268B38C200A42905 /* WatchFaceWidgetView.swift */; };
-		EFB98933268B38C200A42905 /* WatchFaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB98931268B38C200A42905 /* WatchFaceWidgetView.swift */; };
 		EFB98934268B38C200A42905 /* WatchFaceWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB98931268B38C200A42905 /* WatchFaceWidgetView.swift */; };
 		EFF08DEE2670C81C00770F3C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF08DED2670C81C00770F3C /* WidgetKit.framework */; };
 		EFF08DF02670C81C00770F3C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF08DEF2670C81C00770F3C /* SwiftUI.framework */; };
@@ -490,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF30779267099AE00D5E1F4 /* AppError.swift in Sources */,
+				EF51765D286559EF00E33F48 /* WatchFaceWidgetView.swift in Sources */,
 				EFF3077D267099AE00D5E1F4 /* AppAction.swift in Sources */,
 				EF7C074E2671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EF092345268C616200F977FE /* CircularOpenGaugeView.swift in Sources */,
@@ -511,7 +512,6 @@
 				EFF08E102670DA7700770F3C /* ClockComponentView.swift in Sources */,
 				EFF08E142671A76000770F3C /* DititalClockView.swift in Sources */,
 				EFF307652670987F00D5E1F4 /* ContentView.swift in Sources */,
-				EFB98932268B38C200A42905 /* WatchFaceWidgetView.swift in Sources */,
 				EFF307632670987F00D5E1F4 /* WidgeterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,12 +523,12 @@
 				EF157B4326897F2E00CCCE87 /* DaysCountdownView.swift in Sources */,
 				EFF3077A267099AE00D5E1F4 /* AppError.swift in Sources */,
 				EF157B4B2689D8F000CCCE87 /* SwiftUIView.swift in Sources */,
+				EF51765E286559EF00E33F48 /* WatchFaceWidgetView.swift in Sources */,
 				EF05494D268F17510089C07F /* CornerCalendarView.swift in Sources */,
 				EF157B472689C07D00CCCE87 /* Color+extension.swift in Sources */,
 				EF09234A268DB3D600F977FE /* CornerGaugeView.swift in Sources */,
 				EF010A2C26722BBD00DB2AF9 /* StorageUsageView.swift in Sources */,
 				EFF3077E267099AE00D5E1F4 /* AppAction.swift in Sources */,
-				EFB98933268B38C200A42905 /* WatchFaceWidgetView.swift in Sources */,
 				EF7C074F2671F07A00AA2A69 /* CalendarView.swift in Sources */,
 				EFF3078726709B6600D5E1F4 /* AppConfiguration.swift in Sources */,
 				EFF08E152671A76000770F3C /* DititalClockView.swift in Sources */,

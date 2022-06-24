@@ -30,14 +30,14 @@ struct WatchFaceWidgetView: View {
                                 .fill(colorScheme == .light ? Color.white : Color.black)
                                 .frame(width: minLength * 0.01, height: minLength * 0.04, alignment: .center)
                         }
-//                        ClockMarkView(12, origin: true) { index in
-//                            Text("\(index == 0 ? 12 : index)")
-//                                .font(.system(size: 16))
-//                                .minimumScaleFactor(0.5)
-//                                .foregroundColor(.black)
-//                                .frame(width: minLength / 10 , height: minLength / 10)
-//                                .padding(.all, 5)
-//                        }
+                        ClockMarkView(12, origin: true) { index in
+                            Text("\(index == 0 ? 12 : index)")
+                                .font(.system(size: 16))
+                                .minimumScaleFactor(0.5)
+                                .foregroundColor(.black)
+                                .frame(width: minLength / 10 , height: minLength / 10)
+                                .padding(.all, 5)
+                        }
                     }
                     .frame(width: minLength * 0.7)
                     Group {
